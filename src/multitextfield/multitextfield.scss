@@ -1,0 +1,27 @@
+:host {
+  position: relative;
+  display: block;
+}
+textarea,
+.pre {
+  overflow-y: auto;
+  max-height: 18rem;
+  width: var(--dope-width, 100%);
+  display: var(--dope-display);
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  font: inherit;
+  background: transparent;
+}
+textarea {
+  height: 1rem;
+  resize: none;
+}
+.pre {
+  position: absolute;
+  z-index: -1;
+  visibility: hidden;
+  padding: 1rem 0 0 0;
+}

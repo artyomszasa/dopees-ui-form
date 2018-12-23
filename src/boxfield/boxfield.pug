@@ -1,0 +1,10 @@
+link(rel='stylesheet' href='boxfield.css')
+.field(focused$='[[focused]]' empty$='[[empty]]' readonly$='[[readonly]]' required$='[[required]]' invalid$='[[invalid]]')
+  .field--box
+    label.field--label [[label]]
+    .field--inner
+      slot.field--body(name='implementation')
+      slot.field--icon(name='icon')
+  .field--under
+    template(is='dom-if' if='[[hint]]')
+      span.field--hint [[hint]]

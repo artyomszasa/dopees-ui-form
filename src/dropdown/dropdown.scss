@@ -1,0 +1,45 @@
+.dropdown {
+  position: relative;
+  display: flex;
+
+  &--value {
+    height: var(--dope-height, 1.75rem);
+    line-height: var(--dope-height, 1.75rem);
+    width: var(--dope-width, 100%);
+    display: var(--dope-display);
+    padding: var(--dope-padding, 0);
+    font-size: inherit;
+    font-family: inherit;
+
+    &[empty] {
+      color: var(--text-color, #000);
+      opacity: .38;
+    }
+  }
+
+  &--body {
+    position: absolute;
+    display: none;
+    top: var(--dope-height, 1.75rem);
+    left: 0;
+    width: auto;
+    max-height: var(--dope-max-height, 16rem);
+    box-shadow: 0.125rem 0.125rem 0.25rem rgba(0,0,0,.54);
+    border-radius: .375rem;
+
+    &[shown] {
+      display: block;
+    }
+  }
+}
+
+dope-material-icon {
+  width: 1rem;
+  height: 1rem;
+  margin: .375rem 0 .375rem .375rem;
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}

@@ -1,0 +1,11 @@
+link(rel='stylesheet' href='menu.css')
+.menu
+  template(is='dom-repeat' items='[[items]]')
+    template(is='dom-if' if='[[isThruthy(item)]]')
+      .item(selected$='[[__eq(selectedIndex, index)]]' disabled$='[[item.disabled]]' data-index$='[[index]]' on-click='onItemClick')
+        template(is='dom-if' if='[[item.icon]]')
+          dope-material-icon(type$='[[item.icon]]').item--icon
+        .item--text [[item.text]]
+    template(is='dom-if' if='[[isFalsy(item)]]')
+      .separator
+

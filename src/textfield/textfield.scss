@@ -1,0 +1,16 @@
+input {
+  height: var(--dope-height, 1.75rem);
+  line-height: var(--dope-height, 1.75rem);
+  width: var(--dope-width, 100%);
+  display: var(--dope-display);
+  padding: var(--dope-padding, 0);
+  margin: 0;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-size: inherit;
+  font-family: inherit;
+  background: transparent;
+  text-align: var(--dope-text-align, left);
+  color: var(--text-color, #000);
+}

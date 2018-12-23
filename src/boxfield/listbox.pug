@@ -1,0 +1,23 @@
+style :host{display:inline-block;vertical-align:middle}
+dope-box(
+  label='[[label]]'
+  dirty='[[dirty]]'
+  readonly='[[readonly]]'
+  required='[[required]]'
+  focused='[[focused]]'
+  invalid='[[invalid]]'
+  empty='[[computeEmpty(empty, placeholder)]]'
+  on-click='activate')
+    dope-list-field.raw(
+      slot='implementation'
+      type='[[type]]'
+      placeholder='[[placeholder]]'
+      readonly='[[readonly]]'
+      required='[[required]]'
+      items='[[items]]'
+      invalid='{{invalid}}'
+      focused='{{focused}}'
+      empty='{{empty}}'
+      dirty='{{dirty}}'
+      value='{{value}}')
+    dope-material-icon.icon(slot='icon' type='expand more' on-click='onIconClick')
