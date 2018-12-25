@@ -1,3 +1,16 @@
 :host {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+}
+
+.field {
+  height: 100%;
   display: inline-block;
+  overflow-x: none;
+  overflow-y: auto;
+}
+
+dope-menu {
+  height: 100%;
 }

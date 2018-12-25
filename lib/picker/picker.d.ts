@@ -1,6 +1,7 @@
 import '../dropdown/dropdown';
 import { ValueField } from '../field';
 import { PolymerElement } from '@polymer/polymer/polymer-element';
+import { DopeDropDown } from '../dropdown/dropdown';
 export interface PickerTemplateOptions {
     implementation: string;
     css?: string;
@@ -18,6 +19,7 @@ export declare class Picker<T> extends Picker_base {
     implementationFocused: boolean;
     protected implementation: ValueField<T | undefined>;
     protected wrapper: HTMLElement;
+    protected dropDown: DopeDropDown<T>;
     onFocus(): void;
     onBlur(): void;
     observeActive(selfFocused: boolean, implementationFocused: boolean): void;

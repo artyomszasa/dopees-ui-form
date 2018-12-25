@@ -41,6 +41,9 @@ export class ListField<T> extends FieldMixin(PolymerElement) implements ValueFie
   @property()
   formatter: (item: T|undefined) => string;
 
+  @property()
+  equality: (a: T|undefined, b: T|undefined) => boolean = (a, b) => a === b;
+
   @property({ type: Array })
   items: ListFieldItem<T>[] = [];
 
@@ -58,6 +61,7 @@ export class ListField<T> extends FieldMixin(PolymerElement) implements ValueFie
 
   constructor() {
     super();
+    this.empty = true;
     this.formatter = x => x ? x.toString() : '';
   }
 
@@ -101,7 +105,9 @@ export class ListField<T> extends FieldMixin(PolymerElement) implements ValueFie
     if (!value || !items) {
       this.selectedIndex = required ? -1 : 0;
     } else {
-      this.selectedIndex = items.findIndex(item => item.data === value) + (required ? 0 : 1);
+      this.selectedIndex = items.findIndex(item => {
+        return this.equality(item.data, value);
+      }) + (required ? 0 : 1);
     }
   }
 }

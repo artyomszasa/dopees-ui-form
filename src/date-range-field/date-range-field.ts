@@ -59,6 +59,7 @@ export class DateRangeField extends FieldMixin(PolymerElement) implements ValueF
 
   constructor() {
     super();
+    this.empty = true;
     this.selection = () => false;
   }
 
@@ -98,6 +99,7 @@ export class DateRangeField extends FieldMixin(PolymerElement) implements ValueF
     try {
       this.startDate = value.start;
       this.endDate = value.end;
+      this.empty = !value || !(value.start || value.end);
     } finally {
       this.__valueChanging = false;
     }

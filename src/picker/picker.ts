@@ -3,6 +3,7 @@ import { FieldMixin, ValueField } from '../field';
 import { PolymerElement } from '@polymer/polymer/polymer-element';
 import { property, query, observe } from '@polymer/decorators/lib/decorators';
 import { mkTemplate } from '../templates';
+import { DopeDropDown } from '../dropdown/dropdown';
 import view from './picker.pug';
 
 export interface PickerTemplateOptions {
@@ -83,12 +84,15 @@ export class Picker<T> extends FieldMixin(PolymerElement) {
   @query('.wrapper')
   protected wrapper!: HTMLElement
 
+  @query('dope-drop-down')
+  protected dropDown!: DopeDropDown<T>;
+
   onFocus() { this.selfFocused = true; }
 
   onBlur() {
     clearTimeout(this.__blurTimeout);
     // allow implementation to focus...
-    this.__blurTimeout = setTimeout(() => this.selfFocused = false, 25);
+    this.__blurTimeout = setTimeout(() => this.selfFocused = false, 50);
   }
 
   @observe('selfFocused', 'implementationFocused')

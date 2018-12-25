@@ -16,6 +16,7 @@ export declare class ListField<T> extends ListField_base implements ValueField<T
     value: T | undefined;
     tabindex?: number;
     formatter: (item: T | undefined) => string;
+    equality: (a: T | undefined, b: T | undefined) => boolean;
     items: ListFieldItem<T>[];
     placeholder?: string;
     /**

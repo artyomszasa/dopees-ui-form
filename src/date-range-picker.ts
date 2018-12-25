@@ -67,9 +67,14 @@ export class DateRangePicker extends Picker<DateTimeRange> implements ValueField
     this.innerField.activate();
   }
 
+  @observe('empty')
+  forceEmpty(empty: boolean) {
+    this.dropDown.forcedEmpty = empty;
+  }
+
   @observe('value')
-  observeEmpty(value: DateTime|undefined) {
-    this.empty = !value;
+  observeEmpty(value: DateTimeRange|undefined) {
+    this.empty = !value || !(value.start || value.end);
   }
 
   @observe('value')

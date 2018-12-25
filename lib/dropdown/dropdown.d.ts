@@ -6,7 +6,9 @@ export declare class DopeDropDown<T> extends PolymerElement {
     formatter: (value: T | undefined) => string;
     opened: boolean;
     value: T | undefined;
+    forcedEmpty: boolean;
     constructor();
+    __or(...values: boolean[]): boolean;
     observeValue(value: T | undefined): void;
     open(): void;
     close(): void;

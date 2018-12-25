@@ -23,10 +23,15 @@ export class DopeDropDown<T> extends PolymerElement {
   @property()
   value: T|undefined;
 
+  @property({ type: Boolean })
+  forcedEmpty: boolean = false;
+
   constructor() {
     super();
     this.formatter = x => x ? x.toString() : (this.placeholder || '');
   }
+
+  __or(...values: boolean[]) { return values.some(Boolean); }
 
   @observe('value')
   observeValue(value: T|undefined) { this.empty = !value; }

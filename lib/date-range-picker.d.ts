@@ -15,7 +15,8 @@ export declare class DateRangePicker extends Picker<DateTimeRange> implements Va
     innerField: DateField;
     constructor();
     activate(): void;
-    observeEmpty(value: DateTime | undefined): void;
+    forceEmpty(empty: boolean): void;
+    observeEmpty(value: DateTimeRange | undefined): void;
     valueChanged(value: DateTimeRange): void;
     valuesChanged(start: DateTime | undefined, end: DateTime | undefined): void;
 }

@@ -1,25 +1,30 @@
-import '../textfield/textfield';
-import '../list-field/list-field';
+import './textfield/textfield';
+import './list-field/list-field';
 // import '../datepicker/datepicker';
 import 'dopees-ui/lib/material-icon';
 import { PolymerElement } from '@polymer/polymer/polymer-element';
 import { customElement, property, query, observe } from '@polymer/decorators/lib/decorators';
-import { ValueField, DecoratedFieldMixin } from '../field';
-import { MultitextField } from '../multitextfield/multitextfield';
-import { ListFieldItem } from '../list-field/list-field';
-import { ListPicker } from '../list-picker/list-picker';
-import { TextField } from '../textfield/textfield';
-import { mkTemplate } from '../templates';
-import { DateTime } from 'dopees-core/lib/datetime';
-import { DatePicker } from '../date-picker';
-import { DateTimeRange } from '../date-range-field/date-range-field';
-import { DateRangePicker } from '../date-range-picker';
-import wrapperView from './boxfield.pug';
-import textBoxView from './textbox.pug';
-import multitextBoxView from './multitextbox.pug';
-import listBoxView from './listbox.pug';
-import dateBoxView from './datebox.pug';
-import dateRangeBoxView from './date-range-box.pug';
+import { ValueField, DecoratedFieldMixin } from './field';
+import { MultitextField } from './multitextfield/multitextfield';
+import { ListFieldItem } from './list-field/list-field';
+import { ListPicker } from './list-picker/list-picker';
+import { TextField } from './textfield/textfield';
+import { mkTemplate } from './templates';
+import { DateTime, TimeSpan } from 'dopees-core/lib/datetime';
+import { DatePicker } from './date-picker';
+import { DateTimeRange } from './date-range-field/date-range-field';
+import { DateRangePicker } from './date-range-picker';
+import { TimePicker } from './time-picker';
+import { DateTimePicker } from './datetime-picker';
+import { sprintf } from 'dopees-core/lib/string';
+import wrapperView from './box/boxfield.pug';
+import textBoxView from './box/textbox.pug';
+import multitextBoxView from './box/multitextbox.pug';
+import listBoxView from './box/listbox.pug';
+import dateBoxView from './box/datebox.pug';
+import dateTimeBoxView from './box/datetime-box.pug';
+import dateRangeBoxView from './box/date-range-box.pug';
+import timeBoxView from './box/time-box.pug';
 
 @customElement('dope-box')
 export class BoxField extends DecoratedFieldMixin(PolymerElement) {
@@ -158,6 +163,82 @@ export class DateBox extends DecoratedFieldMixin(PolymerElement) implements Valu
     this.activate();
   }
 }
+
+@customElement('dope-time-box')
+export class TimeBox extends DecoratedFieldMixin(PolymerElement) implements ValueField<TimeSpan|undefined> {
+  static get template () { return mkTemplate(timeBoxView); }
+  @property({ type: String })
+  placeholder?: string;
+
+  @property({ type: <any>TimeSpan, notify: true })
+  value: TimeSpan|undefined;
+
+  @property()
+  formatter: (item: TimeSpan|undefined) => string;
+
+  @property({ type: <any>TimeSpan })
+  startTime!: TimeSpan;
+
+  @property({ type: <any>TimeSpan })
+  endTime!: TimeSpan;
+
+  @property({ type: <any>TimeSpan })
+  step!: TimeSpan;
+
+  @query('dope-time-picker')
+  impl!: TimePicker;
+
+  constructor() {
+    super();
+    this.formatter = x => x ? sprintf('%02d:%02d', x.hours, x.minutes) : (this.placeholder || '');
+  }
+
+  activate() { this.impl.activate(); }
+
+  computeEmpty(empty: boolean, placeholder: string|undefined) {
+    return empty && !placeholder;
+  }
+
+  onIconClick(e: MouseEvent) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.activate();
+  }
+}
+
+@customElement('dope-datetime-box')
+export class DateTimeBox extends DecoratedFieldMixin(PolymerElement) implements ValueField<DateTime|undefined> {
+  static get template () { return mkTemplate(dateTimeBoxView); }
+  @property({ type: String })
+  placeholder?: string;
+
+  @property({ type: Object, notify: true })
+  value: DateTime|undefined;
+
+  @property()
+  formatter: (item: DateTime|undefined) => string;
+
+  @query('dope-datetime-picker')
+  impl!: DateTimePicker;
+
+  constructor() {
+    super();
+    this.formatter = x => x ? sprintf('%04d. %02d. %02d %02d:%02d', x.year, x.month, x.day, x.hours, x.minutes) : (this.placeholder || '');
+  }
+
+  activate() { this.impl.activate(); }
+
+  computeEmpty(empty: boolean, placeholder: string|undefined) {
+    return empty && !placeholder;
+  }
+
+  onIconClick(e: MouseEvent) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.activate();
+  }
+}
+
 
 @customElement('dope-date-range-box')
 export class DateRangeBox extends DecoratedFieldMixin(PolymerElement) implements ValueField<DateTimeRange> {

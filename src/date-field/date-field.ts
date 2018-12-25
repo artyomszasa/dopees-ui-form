@@ -39,6 +39,7 @@ export class DateField extends FieldMixin(PolymerElement) implements ValueField<
 
   constructor() {
     super();
+    this.empty = true;
     this.selection = () => false;
   }
 

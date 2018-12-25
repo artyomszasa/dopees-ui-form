@@ -1,0 +1,30 @@
+import './date-field/date-field';
+import './time-field';
+import { PolymerElement } from '@polymer/polymer/polymer-element';
+import { ValueField } from './field';
+import { DateTime, TimeSpan } from 'dopees-core/lib/datetime';
+import { DateField } from './date-field/date-field';
+declare const DateTimeField_base: import("./helpers").Ctor<PolymerElement & import("./field").Field>;
+export declare class DateTimeField extends DateTimeField_base implements ValueField<DateTime | undefined> {
+    static readonly template: HTMLTemplateElement;
+    _deserializeValue(value: string | null, type: any): any;
+    private __valueChanging;
+    private __dirtyChanging;
+    private __focusedTimeout;
+    value: DateTime | undefined;
+    dateDirty: boolean;
+    dateFocused: boolean;
+    dateValue?: DateTime;
+    timeDirty: boolean;
+    timeFocused: boolean;
+    timeValue?: TimeSpan;
+    dateField: DateField;
+    constructor();
+    activate(): void;
+    dirtyChanged(dirty: boolean): void;
+    innerDirtyChanged(dateDirty: boolean, timeDirty: boolean): void;
+    observeFocused(dateFocused: boolean, timeFocused: boolean): void;
+    valueChanged(value: DateTime | undefined): void;
+    valuesChanged(date: DateTime | undefined, time: TimeSpan | undefined): void;
+}
+export {};

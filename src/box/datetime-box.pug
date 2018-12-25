@@ -1,0 +1,25 @@
+style :host{display:inline-block;vertical-align:middle}:host([focused]){position:relative;z-index:2;}
+dope-box(
+  label='[[label]]'
+  dirty='[[dirty]]'
+  readonly='[[readonly]]'
+  required='[[required]]'
+  focused='[[focused]]'
+  invalid='[[invalid]]'
+  placeholder='[[placeholder]]'
+  empty='[[computeEmpty(empty, placeholder)]]'
+  on-click='activate')
+    dope-datetime-picker.raw(
+      slot='implementation'
+      type='[[type]]'
+      placeholder='[[placeholder]]'
+      readonly='[[readonly]]'
+      required='[[required]]'
+      items='[[items]]'
+      formatter='{{formatter}}'
+      invalid='{{invalid}}'
+      focused='{{focused}}'
+      empty='{{empty}}'
+      dirty='{{dirty}}'
+      value='{{value}}')
+    dope-material-icon.icon(slot='icon' type='expand more' on-click='onIconClick')
