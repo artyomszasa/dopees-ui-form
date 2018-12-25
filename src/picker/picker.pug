@@ -1,0 +1,16 @@
+link(rel='stylesheet' href='picker.css')
+.wrapper(tabindex$='[[tabindex]]' on-click='activate' on-focus='onFocus' on-blur='onBlur')
+  dope-drop-down(formatter='[[formatter]]' placeholder='[[placeholder]]' value='[[value]]' opened='[[focused]]')
+    template(body)
+    //-
+      dope-list-field(
+        slot='body'
+        tabindex='[[tabindex]]'
+        placeholder='[[placeholder]]'
+        readonly='[[readonly]]'
+        required='[[required]]'
+        items='[[items]]'
+        formatter='[[formatter]]'
+        value='{{value}}'
+        invalid='{{invalid}}'
+        focused='{{focused}}')

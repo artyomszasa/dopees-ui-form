@@ -1,4 +1,4 @@
-style :host{display:inline-block;vertical-align:middle}[empty] dope-material-icon{display: none;}
+style :host{display:inline-block;vertical-align:middle}[empty] dope-material-icon{display: none;}:host([focused]){position:relative;z-index:2;}
 dope-box(
   label='[[label]]'
   dirty='[[dirty]]'
@@ -7,6 +7,7 @@ dope-box(
   focused='[[focused]]'
   invalid='[[invalid]]'
   empty='[[empty]]'
+  placeholder='[[placeholder]]'
   on-click='activate')
     dope-text-field.raw(
       slot='implementation'

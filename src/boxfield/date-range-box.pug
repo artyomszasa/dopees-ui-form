@@ -9,16 +9,19 @@ dope-box(
   placeholder='[[placeholder]]'
   empty='[[computeEmpty(empty, placeholder)]]'
   on-click='activate')
-    dope-list-picker.raw(
+    dope-date-range-picker.raw(
       slot='implementation'
       type='[[type]]'
       placeholder='[[placeholder]]'
       readonly='[[readonly]]'
       required='[[required]]'
       items='[[items]]'
+      formatter='{{formatter}}'
       invalid='{{invalid}}'
       focused='{{focused}}'
       empty='{{empty}}'
       dirty='{{dirty}}'
-      value='{{value}}')
+      value='{{value}}'
+      start-date='{{startDate}}'
+      end-date='{{endDate}}')
     dope-material-icon.icon(slot='icon' type='expand more' on-click='onIconClick')

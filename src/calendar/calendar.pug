@@ -1,0 +1,28 @@
+link(rel='stylesheet' href='calendar.css' inline)
+.calendar
+  .calendar--head
+    span.calendar--left(href='#' title='Előző hónap' on-click='onPrevClick')
+      dope-material-icon(type= 'arrow back')
+    select.calendar--year#year(on-change='onYearChange' on-click='onSelectClick' on-focus='onYearsFocus' on-blur='onYearsBlur')
+      template(is='dom-repeat' items='[[years]]')
+        option(value$='[[item]]' selected='[[__eq(item, currentYear)]]') [[item]]
+    select.calendar--month#month(on-change='onMonthChange' on-click='onSelectClick' on-focus='onMonthsFocus' on-blur='onMonthsBlur')
+      template(is='dom-repeat' items='[[months]]')
+        option(value$='[[item.value]]' selected='[[__eq(item.value, currentMonth)]]') [[item.text]]
+    span.calendar--right(href='#' title='Következő hónap' on-click='onNextClick')
+      dope-material-icon(type= 'arrow forward')
+  .calendar--body
+    .calendar--day: span H
+    .calendar--day: span K
+    .calendar--day: span Sz
+    .calendar--day: span Cs
+    .calendar--day: span P
+    .calendar--day: span Sz
+    .calendar--day: span V
+    template(is='dom-repeat' items='[[cells]]')
+      .calendar--day(active$='[[item.active]]'
+                      selected$='[[item.selected]]'
+                      today$='[[item.today]]'
+                      data-date$='[[item.date.year]]-[[item.date.month]]-[[item.date.day]]'
+                      on-click='onCellClick')
+        span [[item.date.day]]

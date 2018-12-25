@@ -6,10 +6,10 @@ import { mkTemplate } from '../templates';
 import view from './menu.pug';
 
 export interface MenuItem {
-  text: string;
-  disabled?: boolean;
-  icon?: string;
-  data: any;
+  readonly text: string;
+  readonly disabled?: boolean;
+  readonly icon?: string;
+  readonly data: any;
 }
 
 @customElement('dope-menu')

@@ -17,6 +17,7 @@
   "dependencies": {
     "@polymer/polymer": "3.1.0",
     "@polymer/decorators": "3.0.0",
+    "dopees-core": "artyomszasa/dopees-core",
     "dopees-ui": "artyomszasa/dopees-ui"
   },
   "devDependencies": {

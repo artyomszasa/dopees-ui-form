@@ -2,10 +2,10 @@ import '@polymer/polymer/lib/elements/dom-if';
 import '@polymer/polymer/lib/elements/dom-repeat';
 import { PolymerElement } from "@polymer/polymer/polymer-element";
 export interface MenuItem {
-    text: string;
-    disabled?: boolean;
-    icon?: string;
-    data: any;
+    readonly text: string;
+    readonly disabled?: boolean;
+    readonly icon?: string;
+    readonly data: any;
 }
 export declare class Menu extends PolymerElement {
     static readonly chooseEvent = "choose";

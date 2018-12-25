@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+.field {
+  display: block;
+  height: 100%;
+}
+
+dope-calendar {
+  width: var(--width, 16rem);
+  height: var(--height, 14rem);
+}

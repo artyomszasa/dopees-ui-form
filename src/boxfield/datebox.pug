@@ -9,13 +9,14 @@ dope-box(
   placeholder='[[placeholder]]'
   empty='[[computeEmpty(empty, placeholder)]]'
   on-click='activate')
-    dope-list-picker.raw(
+    dope-date-picker.raw(
       slot='implementation'
       type='[[type]]'
       placeholder='[[placeholder]]'
       readonly='[[readonly]]'
       required='[[required]]'
       items='[[items]]'
+      formatter='{{formatter}}'
       invalid='{{invalid}}'
       focused='{{focused}}'
       empty='{{empty}}'

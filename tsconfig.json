@@ -6,10 +6,12 @@
         "declaration": true,
         "outDir": "./lib",
         "strict": true,
+        "inlineSources": true,
         "inlineSourceMap": true,
         "baseUrl": ".",
         "paths": {
             "@polymer/*": [ "node_modules/@polymer/*" ],
+            "dopees-core/*": [ "node_modules/dopees-core/*" ],
             "dopees-ui/*": [ "node_modules/dopees-ui/*" ]
         },
         "experimentalDecorators": true,

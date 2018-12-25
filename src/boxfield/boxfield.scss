@@ -39,12 +39,22 @@
     opacity: .38;
     transition: all .35s cubic-bezier(0,0,.2,1);
     pointer-events: none;
+
+    &:empty {
+      display: none;
+    }
   }
 
   &--inner {
     margin-top: calc(-1 * var(--dope-height, 1.75rem));
     display: flex;
     transition: margin .35s cubic-bezier(0,0,.2,1);
+  }
+
+  &[no-label] {
+    .field--inner {
+      margin-top: 0;
+    }
   }
 
   // &--icon {
@@ -83,6 +93,12 @@
 
       &--inner {
         margin-top: -.75rem;
+      }
+    }
+
+    &[no-label] {
+      .field--inner {
+        margin-top: 0;
       }
     }
 
