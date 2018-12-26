@@ -1,0 +1,4 @@
+link(rel='stylesheet' href='drop-down.css')
+.dropdown
+  .dropdown--value(empty$='[[__or(empty, forcedEmpty)]]') [[formatter(value)]]
+  slot.dropdown--body(name='body' shown$='[[opened]]')

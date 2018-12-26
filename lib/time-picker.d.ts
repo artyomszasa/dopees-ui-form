@@ -1,7 +1,7 @@
 import './time-field';
 import { TimeSpan } from 'dopees-core/lib/datetime';
 import { ValueField } from './field';
-import { Picker } from './picker/picker';
+import { Picker } from './picker';
 import { TimeField } from './time-field';
 export declare class TimePicker extends Picker<TimeSpan> implements ValueField<TimeSpan | undefined> {
     static readonly template: HTMLTemplateElement;

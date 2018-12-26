@@ -2,7 +2,7 @@ import './datetime-field';
 import { customElement, property, query, observe } from '@polymer/decorators/lib/decorators';
 import { DateTime } from 'dopees-core/lib/datetime';
 import { ValueField } from './field';
-import { Picker } from './picker/picker';
+import { Picker } from './picker';
 import { DateTimeField } from './datetime-field';
 import { sprintf } from 'dopees-core/lib/string';
 

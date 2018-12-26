@@ -1,4 +1,5 @@
-import { ListField, ListFieldItem } from './list-field/list-field';
+import './list-field';
+import { ListField, ListFieldItem } from './list-field';
 import { lessThan } from 'dopees-core/lib/contract';
 import { TimeSpan } from 'dopees-core/lib/datetime';
 import { property, observe, customElement } from '@polymer/decorators/lib/decorators';

@@ -1,8 +1,8 @@
-import './date-field/date-field';
+import './date-field';
 import { DateTime } from 'dopees-core/lib/datetime';
 import { ValueField } from './field';
-import { Picker } from './picker/picker';
-import { DateField } from './date-field/date-field';
+import { Picker } from './picker';
+import { DateField } from './date-field';
 export declare class DatePicker extends Picker<DateTime> implements ValueField<DateTime | undefined> {
     static readonly template: HTMLTemplateElement;
     value: DateTime | undefined;

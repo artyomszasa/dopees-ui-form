@@ -1,10 +1,10 @@
-import './date-field/date-field';
+import './date-field';
 import { customElement, property, query, observe } from '@polymer/decorators/lib/decorators';
 import { DateTime } from 'dopees-core/lib/datetime';
 import { sprintf } from 'dopees-core/lib/string';
 import { ValueField } from './field';
-import { Picker } from './picker/picker';
-import { DateField } from './date-field/date-field';
+import { Picker } from './picker';
+import { DateField } from './date-field';
 
 
 @customElement('dope-date-picker')

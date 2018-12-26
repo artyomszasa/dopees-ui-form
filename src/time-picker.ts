@@ -2,7 +2,7 @@ import './time-field';
 import { customElement, property, query, observe } from '@polymer/decorators/lib/decorators';
 import { TimeSpan } from 'dopees-core/lib/datetime';
 import { ValueField } from './field';
-import { Picker } from './picker/picker';
+import { Picker } from './picker';
 import { TimeField } from './time-field';
 import { sprintf } from 'dopees-core/lib/string';
 

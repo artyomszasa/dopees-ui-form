@@ -1,11 +1,11 @@
-import './date-range-field/date-range-field';
+import './date-range-field';
 import { customElement, property, query, observe } from '@polymer/decorators/lib/decorators';
 import { DateTime } from 'dopees-core/lib/datetime';
 import { sprintf } from 'dopees-core/lib/string';
 import { ValueField } from './field';
-import { Picker } from './picker/picker';
-import { DateField } from './date-field/date-field';
-import { DateTimeRange } from './date-range-field/date-range-field';
+import { Picker } from './picker';
+import { DateField } from './date-field';
+import { DateTimeRange } from './date-range-field';
 
 @customElement('dope-date-range-picker')
 export class DateRangePicker extends Picker<DateTimeRange> implements ValueField<DateTimeRange> {

@@ -1,12 +1,12 @@
-import './date-field/date-field';
+import './date-field';
 import './time-field';
 import { PolymerElement } from '@polymer/polymer/polymer-element';
 import { property, observe, customElement, query } from '@polymer/decorators/lib/decorators';
 import { mkTemplate } from './templates';
 import { FieldMixin, ValueField } from './field';
 import { DateTime, TimeSpan } from 'dopees-core/lib/datetime';
+import { DateField } from './date-field';
 import view from './datetime-field/datetime-field.pug';
-import { DateField } from './date-field/date-field';
 
 @customElement('dope-datetime-field')
 export class DateTimeField extends FieldMixin(PolymerElement) implements ValueField<DateTime|undefined> {

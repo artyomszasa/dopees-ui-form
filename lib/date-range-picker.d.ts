@@ -1,9 +1,9 @@
-import './date-range-field/date-range-field';
+import './date-range-field';
 import { DateTime } from 'dopees-core/lib/datetime';
 import { ValueField } from './field';
-import { Picker } from './picker/picker';
-import { DateField } from './date-field/date-field';
-import { DateTimeRange } from './date-range-field/date-range-field';
+import { Picker } from './picker';
+import { DateField } from './date-field';
+import { DateTimeRange } from './date-range-field';
 export declare class DateRangePicker extends Picker<DateTimeRange> implements ValueField<DateTimeRange> {
     static readonly template: HTMLTemplateElement;
     private __valueChanging;
