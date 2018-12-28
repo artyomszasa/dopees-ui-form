@@ -105,6 +105,9 @@ export class ListBox<T> extends DecoratedFieldMixin(PolymerElement) implements V
   @property()
   formatter: (item: T|undefined) => string;
 
+  @property()
+  equality: (a: T|undefined, b: T|undefined) => boolean = (a, b) => a === b;
+
   @property({ type: Array })
   items: ListFieldItem<T>[] = [];
 

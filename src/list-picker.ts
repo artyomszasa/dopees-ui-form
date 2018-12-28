@@ -18,6 +18,7 @@ export class ListPicker<T> extends Picker<T> implements ValueField<T|undefined> 
       implementation: 'dope-list-field',
       arguments: {
         items: '[[items]]',
+        equality: '[[equality]]',
         formatter: '[[formatter]]',
         value: '{{value}}'
       }
@@ -26,6 +27,9 @@ export class ListPicker<T> extends Picker<T> implements ValueField<T|undefined> 
 
   @property({ type: Object, notify: true })
   value: T|undefined;
+
+  @property()
+  equality: (a: T|undefined, b: T|undefined) => boolean = (a, b) => a === b;
 
   @property()
   formatter: (item: T|undefined) => string;
