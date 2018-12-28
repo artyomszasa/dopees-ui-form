@@ -1,6 +1,6 @@
 import 'dopees-ui/lib/material-icon';
 import './text-field';
-import './list-field';
+import './list-picker';
 import { PolymerElement } from '@polymer/polymer/polymer-element';
 import { customElement, property, query, observe } from '@polymer/decorators/lib/decorators';
 import { ValueField, DecoratedFieldMixin } from './field';

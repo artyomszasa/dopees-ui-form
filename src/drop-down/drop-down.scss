@@ -3,11 +3,11 @@
   display: flex;
 
   &--value {
-    height: var(--dope-height, 1.75rem);
-    line-height: var(--dope-height, 1.75rem);
-    width: var(--dope-width, 100%);
-    display: var(--dope-display);
-    padding: var(--dope-padding, 0);
+    height: var(--height, 1.75rem);
+    line-height: var(--height, 1.75rem);
+    width: var(--width, 100%);
+    display: var(--display);
+    padding: var(--padding, 0);
     font-size: inherit;
     font-family: inherit;
 
@@ -20,12 +20,16 @@
   &--body {
     position: absolute;
     display: none;
-    top: var(--dope-height, 1.75rem);
+    top: var(--height, 1.75rem);
     left: 0;
     width: auto;
-    max-height: var(--dope-max-height, 16rem);
+    max-height: var(--max-height, 16rem);
     box-shadow: 0.125rem 0.125rem 0.25rem rgba(0,0,0,.54);
     border-radius: .375rem;
+
+    color: var(--dropdown-color, #000);
+    --background-color: var(--dropdown-background-color, #fff);
+    --background-hover-color: var(--dropdown-background-hover-color, var(--color-primary-100, rgba(0,0,0,.1)));
 
     &[shown] {
       display: block;

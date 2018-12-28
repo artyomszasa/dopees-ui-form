@@ -1,0 +1,27 @@
+// FIXME. kivezetni
+$transition-duration: 0.35s;
+
+.body {
+  min-width: 4rem;
+  height: 2.25rem;
+  line-height: 2.25rem;
+  font-size: 0.875rem;
+  background: transparent;
+  color: var(--color-primary, blue);
+  text-transform: uppercase;
+  padding: 0 .5rem;
+  border-radius: 0.125rem;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font: inherit;
+  // FIXME: változó?
+  transition: background $transition-duration cubic-bezier(0.0, 0.0, 0.2, 1);
+
+  &:hover, &:focus {
+    background: var(--color-primary-hover, rgba(#999999, .2));
+  }
+  &:active {
+    background: var(--color-primary-active, rgba(#999999, .4));
+  }
+}
