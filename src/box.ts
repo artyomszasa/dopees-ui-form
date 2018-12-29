@@ -1,6 +1,7 @@
 import 'dopees-ui/lib/material-icon';
 import './text-field';
 import './list-picker';
+import '@polymer/polymer/lib/elements/dom-if';
 import { PolymerElement } from '@polymer/polymer/polymer-element';
 import { customElement, property, query, observe } from '@polymer/decorators/lib/decorators';
 import { ValueField, DecoratedFieldMixin } from './field';
@@ -29,6 +30,10 @@ import timeBoxView from './box/time-box.pug';
 export class BoxField extends DecoratedFieldMixin(PolymerElement) {
   static get template () { return mkTemplate(wrapperView); }
 
+  __showHint(error: string|undefined, hint: string|undefined): boolean {
+    return !!(!error && hint);
+  }
+
   isNonEmpty(...values: any[]) { return values.some(Boolean); }
 
   isEmpty(...values: any[]) { return !values.some(Boolean); }
@@ -37,6 +42,16 @@ export class BoxField extends DecoratedFieldMixin(PolymerElement) {
 @customElement('dope-text-box')
 export class TextBox extends DecoratedFieldMixin(PolymerElement) implements ValueField<string> {
   static get template () { return mkTemplate(textBoxView); }
+
+  _deserializeValue(value: string|null, type: any) {
+    if (RegExp === type) {
+      if (!value) {
+        return undefined;
+      }
+      return new RegExp(value);
+    }
+    return super._deserializeValue(value, type);
+  }
 
   @query('.raw')
   protected field!: TextField;
@@ -47,6 +62,9 @@ export class TextBox extends DecoratedFieldMixin(PolymerElement) implements Valu
   @property({ type: String })
   placeholder?: string;
 
+  @property({ type: <any>RegExp })
+  pattern?: RegExp;
+
   @property({ type: Number, reflectToAttribute: true })
   minlength?: number;
 
@@ -55,6 +73,15 @@ export class TextBox extends DecoratedFieldMixin(PolymerElement) implements Valu
 
   @property({ type: String, notify: true })
   value: string = '';
+
+  @property({ type: String })
+  patternMessage?: string;
+
+  @property({ type: String })
+  minlengthMessage?: string;
+
+  @property({ type: String })
+  maxlengthMessage?: string;
 
   activate() { this.field.activate(); }
 

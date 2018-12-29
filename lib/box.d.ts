@@ -1,6 +1,7 @@
 import 'dopees-ui/lib/material-icon';
 import './text-field';
 import './list-picker';
+import '@polymer/polymer/lib/elements/dom-if';
 import { PolymerElement } from '@polymer/polymer/polymer-element';
 import { ValueField } from './field';
 import { MultitextField } from './multitextfield/multitextfield';
@@ -16,18 +17,24 @@ import { DateTimePicker } from './datetime-picker';
 declare const BoxField_base: import("./helpers").Ctor<PolymerElement & import("./field").Field & import("./field").FieldWrapper>;
 export declare class BoxField extends BoxField_base {
     static readonly template: HTMLTemplateElement;
+    __showHint(error: string | undefined, hint: string | undefined): boolean;
     isNonEmpty(...values: any[]): boolean;
     isEmpty(...values: any[]): boolean;
 }
 declare const TextBox_base: import("./helpers").Ctor<PolymerElement & import("./field").Field & import("./field").FieldWrapper>;
 export declare class TextBox extends TextBox_base implements ValueField<string> {
     static readonly template: HTMLTemplateElement;
+    _deserializeValue(value: string | null, type: any): any;
     protected field: TextField;
     type?: string;
     placeholder?: string;
+    pattern?: RegExp;
     minlength?: number;
     maxlength?: number;
     value: string;
+    patternMessage?: string;
+    minlengthMessage?: string;
+    maxlengthMessage?: string;
     activate(): void;
     onClearClick(e: MouseEvent): void;
 }

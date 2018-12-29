@@ -1,6 +1,7 @@
-style :host{display:inline-block;vertical-align:middle}[empty] dope-material-icon{display: none;}:host([focused]){position:relative;z-index:2;}
+style :host{display:inline-block;vertical-align:middle}[empty] dope-material-icon{display: none;}[required] dope-material-icon{display: none;}:host([focused]){position:relative;z-index:2;}
 dope-box(
   label='[[label]]'
+  hint='[[hint]]'
   dirty='[[dirty]]'
   readonly='[[readonly]]'
   required='[[required]]'
@@ -8,6 +9,7 @@ dope-box(
   invalid='[[invalid]]'
   empty='[[empty]]'
   placeholder='[[placeholder]]'
+  validation-message='[[validationMessage]]'
   on-click='activate')
     dope-text-field.raw(
       slot='implementation'
@@ -15,10 +17,16 @@ dope-box(
       placeholder='[[placeholder]]'
       readonly='[[readonly]]'
       required='[[required]]'
-      minlength='[[minlength]]'
+      pattern='[[pattern]]'
       maxlength='[[maxlength]]'
+      minlength='[[minlength]]'
+      maxlength-message='[[maxlengthMessage]]'
+      minlength-message='[[minlengthMessage]]'
+      pattern-message='[[patternMessage]]'
+      required-message='[[requiredMessage]]'
       invalid='{{invalid}}'
       focused='{{focused}}'
       empty='{{empty}}'
+      validation-message='{{validationMessage}}'
       value='{{value}}')
     dope-material-icon(slot='icon' type='close' on-click='onClearClick')

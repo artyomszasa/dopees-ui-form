@@ -6,5 +6,7 @@ link(rel='stylesheet' href='box.css')
       slot.field--body(name='implementation')
       slot.field--icon(name='icon')
   .field--under
-    template(is='dom-if' if='[[hint]]')
+    template(is='dom-if' if='[[__showHint(validationMessage, hint)]]')
       span.field--hint [[hint]]
+    template(is='dom-if' if='[[validationMessage]]')
+      span.field--error [[validationMessage]]

@@ -10,6 +10,7 @@
   display: inline-block;
   overflow-x: none;
   overflow-y: auto;
+  border-radius: var(--border-radius, 0);
 }
 
 dope-menu {

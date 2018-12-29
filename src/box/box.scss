@@ -15,7 +15,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     padding: .5rem .625rem;
     background: var(--background-color, #fff);
     border: .125rem solid var(--border-color, rgba(0, 0, 0, 0.25));
@@ -23,9 +23,20 @@
     transition: border .35s cubic-bezier(0,0,.2,1);
   }
 
+  &--hint {
+    color: var(--border-hover-color, rgba(0, 0, 0, 0.5));
+    font-size: var(--hint-font-size, .75rem);
+  }
+
+  &--error {
+    color: var(--border-error-color, #FF1744);
+    font-size: var(--error-font-size, var(--hint-font-size, .75rem));
+  }
+
   &--label {
     position: relative;
     display: block;
+    align-self: flex-start;
     z-index: 1;
     padding: 0 .5rem 0 0;
     margin: 0;
@@ -71,6 +82,10 @@
       width: 1rem;
       height: 1rem;
     }
+  }
+
+  &--body::slotted(*) {
+    flex: 1;
   }
 
   &:not([empty]), &[focused] {

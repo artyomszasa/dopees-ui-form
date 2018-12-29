@@ -34,6 +34,11 @@
     &[shown] {
       display: block;
     }
+
+    &::slotted(*) {
+      border-radius: .375rem;
+      --border-radius: .375rem;
+    }
   }
 }
 
