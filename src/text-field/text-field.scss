@@ -1,9 +1,9 @@
 input {
-  height: var(--dope-height, 1.75rem);
-  line-height: var(--dope-height, 1.75rem);
-  width: var(--dope-width, 100%);
-  display: var(--dope-display);
-  padding: var(--dope-padding, 0);
+  height: var(--height, 1.75rem);
+  line-height: var(--height, 1.75rem);
+  width: var(--width, 100%);
+  display: var(--display);
+  padding: var(--padding, 0);
   margin: 0;
   border: none;
   outline: none;
@@ -11,6 +11,6 @@ input {
   font-size: inherit;
   font-family: inherit;
   background: transparent;
-  text-align: var(--dope-text-align, left);
+  text-align: var(--text-align, left);
   color: var(--text-color, #000);
 }

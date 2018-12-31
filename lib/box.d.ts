@@ -1,10 +1,12 @@
 import 'dopees-ui/lib/material-icon';
 import './text-field';
 import './list-picker';
+import './text-field';
+import './multitext-field';
 import '@polymer/polymer/lib/elements/dom-if';
 import { PolymerElement } from '@polymer/polymer/polymer-element';
 import { ValueField } from './field';
-import { MultitextField } from './multitextfield/multitextfield';
+import { MultitextField } from './multitext-field';
 import { ListFieldItem } from './list-field';
 import { ListPicker } from './list-picker';
 import { TextField } from './text-field';
@@ -47,7 +49,10 @@ export declare class MiltitextBox extends MiltitextBox_base implements ValueFiel
     minlength?: number;
     maxlength?: number;
     value: string;
+    minlengthMessage?: string;
+    maxlengthMessage?: string;
     activate(): void;
+    onClearClick(e: MouseEvent): void;
 }
 declare const ListBox_base: import("./helpers").Ctor<PolymerElement & import("./field").Field & import("./field").FieldWrapper>;
 export declare class ListBox<T> extends ListBox_base implements ValueField<T | undefined> {

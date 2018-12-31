@@ -1,19 +1,29 @@
+link(rel='stylesheet' href='multitext-box.css')
 dope-box(
+  label='[[label]]'
+  hint='[[hint]]'
   dirty='[[dirty]]'
   readonly='[[readonly]]'
   required='[[required]]'
   focused='[[focused]]'
   invalid='[[invalid]]'
   empty='[[empty]]'
-  placeholder='[[placeholder]]')
+  placeholder='[[placeholder]]'
+  validation-message='[[validationMessage]]'
+  on-click='activate')
     dope-multitext-field.raw(
-      type='[[type]]'
+      slot='implementation'
       placeholder='[[placeholder]]'
       readonly='[[readonly]]'
       required='[[required]]'
-      minlength='[[minlength]]'
       maxlength='[[maxlength]]'
+      minlength='[[minlength]]'
+      maxlength-message='[[maxlengthMessage]]'
+      minlength-message='[[minlengthMessage]]'
+      required-message='[[requiredMessage]]'
       invalid='{{invalid}}'
       focused='{{focused}}'
       empty='{{empty}}'
+      validation-message='{{validationMessage}}'
       value='{{value}}')
+    dope-material-icon(slot='icon' type='close' on-click='onClearClick')

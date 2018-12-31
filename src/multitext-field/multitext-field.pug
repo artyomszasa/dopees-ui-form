@@ -1,0 +1,12 @@
+link(rel='stylesheet' href='multitext-field.css')
+textarea(type$='[[type]]'
+  minlength$='[[minlength]]'
+  maxlength$='[[maxlength]]'
+  readonly$='[[readonly]]'
+  required$='[[required]]'
+  on-keydown='onKeydown'
+  on-input='onChange'
+  on-change='onChange'
+  on-focus='onFocus'
+  on-blur='onBlur')
+div(contenteditable): pre.pre

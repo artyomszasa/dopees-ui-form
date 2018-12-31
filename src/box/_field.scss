@@ -1,0 +1,9 @@
+:host {
+  display: var(--field-display, inline-block);
+  vertical-align: middle;
+}
+
+:host([focused]) {
+  position:relative;
+  z-index:2;
+}

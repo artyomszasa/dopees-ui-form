@@ -1,11 +1,11 @@
 :host {
   position: relative;
-  display: block;
+  display: inline-flex;
+  flex-direction: column;
 }
 textarea,
 .pre {
   overflow-y: auto;
-  max-height: 18rem;
   width: var(--dope-width, 100%);
   display: var(--dope-display);
   padding: 0;
@@ -18,10 +18,15 @@ textarea,
 textarea {
   height: 1rem;
   resize: none;
+  min-height: calc(var(--height, 1.75rem) - .75rem);
+  line-height: calc(var(--height, 1.75rem) - .75rem);
+  padding-top: .375rem;
+  padding-bottom: .375rem;
 }
 .pre {
   position: absolute;
   z-index: -1;
   visibility: hidden;
-  padding: 1rem 0 0 0;
+  padding: .5rem 0 0 0;
+  white-space: pre-wrap;
 }

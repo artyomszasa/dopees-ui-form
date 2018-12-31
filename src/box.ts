@@ -1,11 +1,13 @@
 import 'dopees-ui/lib/material-icon';
 import './text-field';
 import './list-picker';
+import './text-field';
+import './multitext-field';
 import '@polymer/polymer/lib/elements/dom-if';
 import { PolymerElement } from '@polymer/polymer/polymer-element';
 import { customElement, property, query, observe } from '@polymer/decorators/lib/decorators';
 import { ValueField, DecoratedFieldMixin } from './field';
-import { MultitextField } from './multitextfield/multitextfield';
+import { MultitextField } from './multitext-field';
 import { ListFieldItem } from './list-field';
 import { ListPicker } from './list-picker';
 import { TextField } from './text-field';
@@ -114,7 +116,19 @@ export class MiltitextBox extends DecoratedFieldMixin(PolymerElement) implements
   @property({ type: String })
   value: string = '';
 
+  @property({ type: String })
+  minlengthMessage?: string;
+
+  @property({ type: String })
+  maxlengthMessage?: string;
+
   activate() { this.field.activate(); }
+
+  onClearClick(e: MouseEvent) {
+    e.stopPropagation();
+    e.preventDefault();
+    this.value = '';
+  }
 }
 
 @customElement('dope-list-box')
