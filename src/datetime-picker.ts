@@ -1,11 +1,10 @@
 import './datetime-field';
-import { customElement, property, query, observe } from '@polymer/decorators/lib/decorators';
+import { customElement, property, query } from '@polymer/decorators/lib/decorators';
 import { DateTime } from 'dopees-core/lib/datetime';
 import { ValueField } from './field';
 import { Picker } from './picker';
 import { DateTimeField } from './datetime-field';
 import { sprintf } from 'dopees-core/lib/string';
-
 
 @customElement('dope-datetime-picker')
 export class DateTimePicker extends Picker<DateTime> implements ValueField<DateTime|undefined> {
@@ -31,7 +30,7 @@ export class DateTimePicker extends Picker<DateTime> implements ValueField<DateT
     return super._deserializeValue(value, type);
   }
 
-  @property({ type: <any>DateTime, notify: true })
+  @property({ type: <any> DateTime, notify: true })
   value: DateTime|undefined;
 
   @property()
@@ -43,7 +42,7 @@ export class DateTimePicker extends Picker<DateTime> implements ValueField<DateT
   constructor() {
     super();
     this.empty = true;
-    this.formatter = x => x ? sprintf('%04d. %02d. %02d %02d:%02d', x.year, x.month, x.day, x.hours, x.minutes) : '';
+    this.formatter = (x) => x ? sprintf('%04d. %02d. %02d %02d:%02d', x.year, x.month, x.day, x.hours, x.minutes) : '';
   }
 
   activate() {

@@ -7,10 +7,10 @@ export declare class DateField extends DateField_base implements ValueField<Date
     static readonly template: HTMLTemplateElement;
     private __blurTimeout;
     years: number[];
-    months: {
+    months: Array<{
         value: number;
         text: string;
-    }[];
+    }>;
     value: DateTime | undefined;
     tabindex?: number;
     selection: (date: DateTime) => boolean;

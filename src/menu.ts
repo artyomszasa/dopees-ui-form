@@ -1,7 +1,7 @@
 import '@polymer/polymer/lib/elements/dom-if';
 import '@polymer/polymer/lib/elements/dom-repeat';
-import { PolymerElement } from "@polymer/polymer/polymer-element";
-import { customElement, property } from "@polymer/decorators/lib/decorators";
+import { PolymerElement } from '@polymer/polymer/polymer-element';
+import { customElement, property } from '@polymer/decorators/lib/decorators';
 import { mkTemplate } from './templates';
 import view from './menu/menu.pug';
 
@@ -19,7 +19,7 @@ export class Menu extends PolymerElement {
   static get template() { return mkTemplate(view); }
 
   @property({ type: Array })
-  items: MenuItem[] = []
+  items: MenuItem[] = [];
 
   @property({ type: Boolean, notify: true })
   selectedIndex?: number;

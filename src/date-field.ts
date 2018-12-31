@@ -4,7 +4,7 @@ import { customElement, property, observe, query } from '@polymer/decorators/lib
 import { DateTime } from 'dopees-core/lib/datetime';
 import { FieldMixin, ValueField } from './field';
 import { months } from './calendar';
-import { mkTemplate } from "./templates";
+import { mkTemplate } from './templates';
 import view from './date-field/date-field.pug';
 
 @customElement('dope-date-field')
@@ -14,10 +14,10 @@ export class DateField extends FieldMixin(PolymerElement) implements ValueField<
   private __blurTimeout: any;
 
   @property({ type: Array })
-  years: number[] = Array.apply(null, <any>{ length: 50 }).map((_, i) => 1980 + i);
+  years: number[] = Array.apply(null, <any> { length: 50 }).map((_, i) => 1980 + i);
 
   @property({ type: Array })
-  months: { value: number, text: string }[] = months;
+  months: Array<{ value: number, text: string }> = months;
 
   @property({ type: Object, notify: true })
   value: DateTime|undefined;

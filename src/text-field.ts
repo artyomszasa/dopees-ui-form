@@ -25,7 +25,7 @@ export class TextField extends ValidationMixin(FieldMixin(PolymerElement)) imple
   @property({ type: String })
   placeholder?: string;
 
-  @property({ type: <any>RegExp })
+  @property({ type: <any> RegExp })
   pattern?: RegExp;
 
   @property({ type: Number, reflectToAttribute: true })

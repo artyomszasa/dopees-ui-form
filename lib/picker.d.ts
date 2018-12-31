@@ -9,9 +9,7 @@ export interface PickerTemplateOptions {
 }
 declare const Picker_base: import("./helpers").Ctor<PolymerElement & import("./field").Field>;
 export declare class Picker<T> extends Picker_base {
-    static createTemplate<T extends {
-        new (...args: any[]): PolymerElement;
-    }>(host: T, options: PickerTemplateOptions): HTMLTemplateElement;
+    static createTemplate<T extends new (...args: any[]) => PolymerElement>(host: T, options: PickerTemplateOptions): HTMLTemplateElement;
     private __blurTimeout;
     placeholder?: string;
     tabindex?: number;

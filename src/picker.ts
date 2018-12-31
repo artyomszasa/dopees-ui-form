@@ -9,7 +9,7 @@ import view from './picker/picker.pug';
 export interface PickerTemplateOptions {
   implementation: string;
   css?: string;
-  arguments?: {}
+  arguments?: {};
 }
 
 const defaults = {
@@ -21,21 +21,22 @@ const defaults = {
   dirty: '{{dirty}}',
   invalid: '{{invalid}}',
   focused: '{{implementationFocused}}'
-}
+};
 
 const keyTemplate = Symbol('template');
 const templateBase = mkTemplate(view);
 
 export class Picker<T> extends FieldMixin(PolymerElement) {
-  static createTemplate<T extends { new(...args: any[]): PolymerElement}>(host: T, options: PickerTemplateOptions): HTMLTemplateElement {
+  // tslint:disable-next-line:max-line-length
+  static createTemplate<T extends new(...args: any[]) => PolymerElement>(host: T, options: PickerTemplateOptions): HTMLTemplateElement {
     if (!options) {
       throw new TypeError('options must be specified');
     }
     if (!host[keyTemplate]) {
-      const template = <HTMLTemplateElement>templateBase.cloneNode(true);
+      const template = <HTMLTemplateElement> templateBase.cloneNode(true);
       // inject css
       if (options.css) {
-        let style: HTMLStyleElement = <HTMLStyleElement>template.content.querySelector('style');
+        let style: HTMLStyleElement = <HTMLStyleElement> template.content.querySelector('style');
         if (!style) {
           style = document.createElement('style');
           template.content.appendChild(style);
@@ -43,21 +44,21 @@ export class Picker<T> extends FieldMixin(PolymerElement) {
         style.textContent = (style.textContent + options.css);
       }
       // inject implementation
-      const inner = <Node>template.content.querySelector('template[body]');
+      const inner = <Node> template.content.querySelector('template[body]');
       const implementationTemplate = mkTemplate(`<${options.implementation}></${options.implementation}>`);
-      const implementation = <HTMLElement>implementationTemplate.content.querySelector(options.implementation);
+      const implementation = <HTMLElement> implementationTemplate.content.querySelector(options.implementation);
       const args = options.arguments || {};
       const defaultKeys = Object.keys(defaults);
-      defaultKeys.forEach(key => {
+      defaultKeys.forEach((key) => {
         const value = args[key] || defaults[key];
         implementation.setAttribute(key, value);
       });
-      Object.keys(args).forEach(key => {
+      Object.keys(args).forEach((key) => {
         if (-1 === defaultKeys.indexOf(key)) {
           implementation.setAttribute(key, args[key]);
         }
       });
-      const res = <HTMLElement>(<Node>inner.parentNode).replaceChild(implementation, inner);
+      const res = <HTMLElement> (<Node> inner.parentNode).replaceChild(implementation, inner);
       res.classList.add('.picker--implementation');
       host[keyTemplate] = template;
     }
@@ -79,10 +80,10 @@ export class Picker<T> extends FieldMixin(PolymerElement) {
   implementationFocused: boolean = false;
 
   @query('.picker--implementation')
-  protected implementation!: ValueField<T|undefined>
+  protected implementation!: ValueField<T|undefined>;
 
   @query('.wrapper')
-  protected wrapper!: HTMLElement
+  protected wrapper!: HTMLElement;
 
   @query('dope-drop-down')
   protected dropDown!: DopeDropDown<T>;

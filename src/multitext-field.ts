@@ -39,7 +39,7 @@ export class MultitextField extends FieldMixin(PolymerElement) implements ValueF
   @query('.pre')
   pre!: HTMLDivElement;
 
-  private updateHeight () {
+  private updateHeight() {
     let value = this.native.value;
     if (value.endsWith('\n')) {
       value += 'x';

@@ -8,7 +8,7 @@ import { Picker } from './picker';
 export interface ListFieldItem<T> {
   disabled?: boolean;
   icon?: string;
-  data: T
+  data: T;
 }
 
 @customElement('dope-list-picker')
@@ -29,20 +29,20 @@ export class ListPicker<T> extends Picker<T> implements ValueField<T|undefined> 
   value: T|undefined;
 
   @property()
-  equality: (a: T|undefined, b: T|undefined) => boolean = (a, b) => a === b;
+  equality: (a: T|undefined, b: T|undefined) => boolean = (a, b) => a === b
 
   @property()
   formatter: (item: T|undefined) => string;
 
   @property({ type: Array })
-  items: ListFieldItem<T>[] = [];
+  items: Array<ListFieldItem<T>> = [];
 
   @query('dope-list-field')
   innerField!: ListField<T>;
 
   constructor() {
     super();
-    this.formatter = x => x ? x.toString() : (this.placeholder || '');
+    this.formatter = (x) => x ? x.toString() : (this.placeholder || '');
   }
 
   activate() {

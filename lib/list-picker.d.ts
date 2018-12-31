@@ -13,7 +13,7 @@ export declare class ListPicker<T> extends Picker<T> implements ValueField<T | u
     value: T | undefined;
     equality: (a: T | undefined, b: T | undefined) => boolean;
     formatter: (item: T | undefined) => string;
-    items: ListFieldItem<T>[];
+    items: Array<ListFieldItem<T>>;
     innerField: ListField<T>;
     constructor();
     activate(): void;

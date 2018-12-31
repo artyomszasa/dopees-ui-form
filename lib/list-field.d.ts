@@ -17,7 +17,7 @@ export declare class ListField<T> extends ListField_base implements ValueField<T
     tabindex?: number;
     formatter: (item: T | undefined) => string;
     equality: (a: T | undefined, b: T | undefined) => boolean;
-    items: ListFieldItem<T>[];
+    items: Array<ListFieldItem<T>>;
     placeholder?: string;
     /**
      * Bound to underlying menu property.
@@ -29,8 +29,8 @@ export declare class ListField<T> extends ListField_base implements ValueField<T
     onBlur(): void;
     onFocus(): void;
     onMenuChoose(e: CustomEvent<T>): void;
-    toMenuItems(formatter: (item: T | undefined) => string, items: ListFieldItem<T>[], required: boolean | undefined, placeholder: string | undefined): MenuItem[];
+    toMenuItems(formatter: (item: T | undefined) => string, items: Array<ListFieldItem<T>>, required: boolean | undefined, placeholder: string | undefined): MenuItem[];
     observeEmpty(value: T | undefined): void;
-    observeSelectedIndex(value: T | undefined, items: ListFieldItem<T>[], required: boolean | undefined): void;
+    observeSelectedIndex(value: T | undefined, items: Array<ListFieldItem<T>>, required: boolean | undefined): void;
 }
 export {};

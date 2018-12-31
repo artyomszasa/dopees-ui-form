@@ -1,9 +1,7 @@
-export interface Ctor<T> {
-  new (...args: any[]): T;
-}
+export type Ctor<T> = new (...args: any[]) => T;
 
 export interface WrapEventInit {
-  prefix?: string,
+  prefix?: string;
   bubbles?: boolean;
   cancellable?: boolean;
   composed?: boolean;

@@ -6,7 +6,6 @@ import { Picker } from './picker';
 import { TimeField } from './time-field';
 import { sprintf } from 'dopees-core/lib/string';
 
-
 @customElement('dope-time-picker')
 export class TimePicker extends Picker<TimeSpan> implements ValueField<TimeSpan|undefined> {
   static get template() {
@@ -34,7 +33,7 @@ export class TimePicker extends Picker<TimeSpan> implements ValueField<TimeSpan|
     return super._deserializeValue(value, type);
   }
 
-  @property({ type: <any>TimeSpan, notify: true })
+  @property({ type: <any> TimeSpan, notify: true })
   value: TimeSpan|undefined;
 
   @property()
@@ -55,16 +54,11 @@ export class TimePicker extends Picker<TimeSpan> implements ValueField<TimeSpan|
   constructor() {
     super();
     this.empty = true;
-    this.formatter = x => x ? sprintf('%02d:%02d', x.hours, x.minutes) : '';
+    this.formatter = (x) => x ? sprintf('%02d:%02d', x.hours, x.minutes) : '';
   }
 
   activate() {
     this.wrapper.focus();
     this.innerField.activate();
   }
-
-  // @observe('value')
-  // observeEmpty(value: TimeSpan|undefined) {
-  //   this.empty = !value;
-  // }
 }

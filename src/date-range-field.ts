@@ -1,15 +1,15 @@
 import './calendar';
-import { PolymerElement } from "@polymer/polymer/polymer-element";
-import { customElement, property, observe, query } from "@polymer/decorators/lib/decorators";
-import { FieldMixin, ValueField } from "./field";
-import { months } from "./calendar";
-import { DateTime } from "dopees-core/lib/datetime";
-import { mkTemplate } from "./templates";
+import { PolymerElement } from '@polymer/polymer/polymer-element';
+import { customElement, property, observe, query } from '@polymer/decorators/lib/decorators';
+import { FieldMixin, ValueField } from './field';
+import { months } from './calendar';
+import { DateTime } from 'dopees-core/lib/datetime';
+import { mkTemplate } from './templates';
 import view from './date-range-field/date-range-field.pug';
 
 export interface DateTimeRange {
-  start?: DateTime
-  end?: DateTime
+  start?: DateTime;
+  end?: DateTime;
 }
 
 enum Target {
@@ -28,10 +28,10 @@ export class DateRangeField extends FieldMixin(PolymerElement) implements ValueF
   private __target: Target = Target.Start;
 
   @property({ type: Array })
-  years: number[] = Array.apply(null, <any>{ length: 50 }).map((_, i) => 1980 + i);
+  years: number[] = Array.apply(null, <any> { length: 50 }).map((_, i) => 1980 + i);
 
   @property({ type: Array })
-  months: { value: number, text: string }[] = months;
+  months: Array<{ value: number, text: string }> = months;
 
   @property({ type: Object, notify: true })
   startDate: DateTime|undefined;

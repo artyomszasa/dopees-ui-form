@@ -1,5 +1,5 @@
-import { PolymerElement } from "@polymer/polymer/polymer-element";
-import { customElement, property, observe } from "@polymer/decorators/lib/decorators";
+import { PolymerElement } from '@polymer/polymer/polymer-element';
+import { customElement, property, observe } from '@polymer/decorators/lib/decorators';
 import { mkTemplate } from './templates';
 import view from './drop-down/drop-down.pug';
 
@@ -28,7 +28,7 @@ export class DopeDropDown<T> extends PolymerElement {
 
   constructor() {
     super();
-    this.formatter = x => x ? x.toString() : (this.placeholder || '');
+    this.formatter = (x) => x ? x.toString() : (this.placeholder || '');
   }
 
   __or(...values: boolean[]) { return values.some(Boolean); }

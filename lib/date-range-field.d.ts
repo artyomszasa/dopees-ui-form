@@ -1,7 +1,7 @@
 import './calendar';
-import { PolymerElement } from "@polymer/polymer/polymer-element";
-import { ValueField } from "./field";
-import { DateTime } from "dopees-core/lib/datetime";
+import { PolymerElement } from '@polymer/polymer/polymer-element';
+import { ValueField } from './field';
+import { DateTime } from 'dopees-core/lib/datetime';
 export interface DateTimeRange {
     start?: DateTime;
     end?: DateTime;
@@ -13,10 +13,10 @@ export declare class DateRangeField extends DateRangeField_base implements Value
     private __valueChanging;
     private __target;
     years: number[];
-    months: {
+    months: Array<{
         value: number;
         text: string;
-    }[];
+    }>;
     startDate: DateTime | undefined;
     endDate: DateTime | undefined;
     tabindex?: number;

@@ -12,7 +12,7 @@ export interface ListFieldItem<T> {
   /** Icon to show if any. */
   readonly icon?: string;
   /** Underlying value of the item. */
-  readonly data: T
+  readonly data: T;
 }
 
 class ItemWrapper<T> implements ListFieldItem<T>, MenuItem {
@@ -42,10 +42,10 @@ export class ListField<T> extends FieldMixin(PolymerElement) implements ValueFie
   formatter: (item: T|undefined) => string;
 
   @property()
-  equality: (a: T|undefined, b: T|undefined) => boolean = (a, b) => a === b;
+  equality: (a: T|undefined, b: T|undefined) => boolean = (a, b) => a === b
 
   @property({ type: Array })
-  items: ListFieldItem<T>[] = [];
+  items: Array<ListFieldItem<T>> = [];
 
   @property({ type: String })
   placeholder?: string;
@@ -62,7 +62,7 @@ export class ListField<T> extends FieldMixin(PolymerElement) implements ValueFie
   constructor() {
     super();
     this.empty = true;
-    this.formatter = x => x ? x.toString() : '';
+    this.formatter = (x) => x ? x.toString() : '';
   }
 
   activate() { this.wrapper.focus(); }
@@ -77,12 +77,13 @@ export class ListField<T> extends FieldMixin(PolymerElement) implements ValueFie
     this.value = e.detail;
   }
 
-  toMenuItems(formatter: (item: T|undefined) => string, items: ListFieldItem<T>[], required: boolean|undefined, placeholder: string|undefined) {
+  // tslint:disable-next-line:max-line-length
+  toMenuItems(formatter: (item: T|undefined) => string, items: Array<ListFieldItem<T>>, required: boolean|undefined, placeholder: string|undefined) {
     let mapped: MenuItem[];
     if (!items || !formatter) {
       mapped = [];
     }
-    mapped = items.map(item => new ItemWrapper<T>(item, formatter));
+    mapped = items.map((item) => new ItemWrapper<T>(item, formatter));
     if (!required) {
       mapped.unshift({
         data: undefined,
@@ -102,11 +103,11 @@ export class ListField<T> extends FieldMixin(PolymerElement) implements ValueFie
   }
 
   @observe('value', 'items', 'required')
-  observeSelectedIndex(value: T|undefined, items: ListFieldItem<T>[], required: boolean|undefined) {
+  observeSelectedIndex(value: T|undefined, items: Array<ListFieldItem<T>>, required: boolean|undefined) {
     if (!value || !items) {
       this.selectedIndex = required ? -1 : 0;
     } else {
-      this.selectedIndex = items.findIndex(item => {
+      this.selectedIndex = items.findIndex((item) => {
         return this.equality(item.data, value);
       }) + (required ? 0 : 1);
     }

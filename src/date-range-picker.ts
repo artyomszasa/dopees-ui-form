@@ -38,20 +38,27 @@ export class DateRangePicker extends Picker<DateTimeRange> implements ValueField
   formatter: (item: DateTimeRange) => string;
 
   @property()
-  selection: (date: DateTime) => boolean = () => false;
+  selection: (date: DateTime) => boolean = () => false
 
   @query('dope-date-range-field')
   innerField!: DateField;
 
   constructor() {
     super();
-    this.formatter = x => {
+    this.formatter = (x) => {
       if (!x) {
         return this.placeholder || '';
       }
       if (x.start) {
         if (x.end) {
-          return sprintf('%04d. %02d. %02d -- %04d. %02d. %02d', x.start.year, x.start.month, x.start.day, x.end.year, x.end.month, x.end.day);
+          return sprintf(
+            '%04d. %02d. %02d -- %04d. %02d. %02d',
+            x.start.year,
+            x.start.month,
+            x.start.day,
+            x.end.year,
+            x.end.month,
+            x.end.day);
         }
         return sprintf('%04d. %02d. %02d', x.start.year, x.start.month, x.start.day);
       }

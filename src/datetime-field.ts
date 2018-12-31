@@ -28,7 +28,7 @@ export class DateTimeField extends FieldMixin(PolymerElement) implements ValueFi
 
   private __focusedTimeout: any;
 
-  @property({ type: <any>DateTime, notify: true })
+  @property({ type: <any> DateTime, notify: true })
   value: DateTime|undefined;
 
   @property({ type: Boolean })
@@ -37,7 +37,7 @@ export class DateTimeField extends FieldMixin(PolymerElement) implements ValueFi
   @property({ type: Boolean })
   dateFocused: boolean = false;
 
-  @property({ type: <any>DateTime })
+  @property({ type: <any> DateTime })
   dateValue?: DateTime;
 
   @property({ type: Boolean })
@@ -46,7 +46,7 @@ export class DateTimeField extends FieldMixin(PolymerElement) implements ValueFi
   @property({ type: Boolean })
   timeFocused: boolean = false;
 
-  @property({ type: <any>TimeSpan })
+  @property({ type: <any> TimeSpan })
   timeValue?: TimeSpan;
 
   @query('dope-date-field')
@@ -107,10 +107,18 @@ export class DateTimeField extends FieldMixin(PolymerElement) implements ValueFi
   @observe('dateValue', 'timeValue')
   valuesChanged(date: DateTime|undefined, time: TimeSpan|undefined) {
     if (!this.__valueChanging) {
-      let value: DateTime|undefined = undefined;
+      let value: DateTime|undefined;
       if (date) {
         if (time) {
-          value = new DateTime({ year: date.year, month: date.month, day: date.day, hours: time.hours, minutes: time.minutes, seconds: time.seconds, milliseconds: time.milliseconds });
+          value = new DateTime({
+            year: date.year,
+            month: date.month,
+            day: date.day,
+            hours: time.hours,
+            minutes: time.minutes,
+            seconds: time.seconds,
+            milliseconds: time.milliseconds
+          });
         } else {
           value = new DateTime({ year: date.year, month: date.month, day: date.day });
         }

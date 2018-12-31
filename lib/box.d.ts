@@ -62,7 +62,7 @@ export declare class ListBox<T> extends ListBox_base implements ValueField<T | u
     value: T | undefined;
     formatter: (item: T | undefined) => string;
     equality: (a: T | undefined, b: T | undefined) => boolean;
-    items: ListFieldItem<T>[];
+    items: Array<ListFieldItem<T>>;
     tabindex: number;
     impl: ListPicker<T>;
     constructor();

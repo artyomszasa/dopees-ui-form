@@ -6,7 +6,6 @@ import { ValueField } from './field';
 import { Picker } from './picker';
 import { DateField } from './date-field';
 
-
 @customElement('dope-date-picker')
 export class DatePicker extends Picker<DateTime> implements ValueField<DateTime|undefined> {
   static get template() {
@@ -28,14 +27,14 @@ export class DatePicker extends Picker<DateTime> implements ValueField<DateTime|
   formatter: (item: DateTime|undefined) => string;
 
   @property()
-  selection: (date: DateTime) => boolean = () => false;
+  selection: (date: DateTime) => boolean = () => false
 
   @query('dope-date-field')
   innerField!: DateField;
 
   constructor() {
     super();
-    this.formatter = x => x ? sprintf('%04d. %02d. %02d', x.year, x.month, x.day) : (this.placeholder || '');
+    this.formatter = (x) => x ? sprintf('%04d. %02d. %02d', x.year, x.month, x.day) : (this.placeholder || '');
   }
 
   activate() {

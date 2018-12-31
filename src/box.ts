@@ -30,7 +30,7 @@ import timeBoxView from './box/time-box.pug';
 
 @customElement('dope-box')
 export class BoxField extends DecoratedFieldMixin(PolymerElement) {
-  static get template () { return mkTemplate(wrapperView); }
+  static get template() { return mkTemplate(wrapperView); }
 
   __showHint(error: string|undefined, hint: string|undefined): boolean {
     return !!(!error && hint);
@@ -43,7 +43,7 @@ export class BoxField extends DecoratedFieldMixin(PolymerElement) {
 
 @customElement('dope-text-box')
 export class TextBox extends DecoratedFieldMixin(PolymerElement) implements ValueField<string> {
-  static get template () { return mkTemplate(textBoxView); }
+  static get template() { return mkTemplate(textBoxView); }
 
   _deserializeValue(value: string|null, type: any) {
     if (RegExp === type) {
@@ -64,7 +64,7 @@ export class TextBox extends DecoratedFieldMixin(PolymerElement) implements Valu
   @property({ type: String })
   placeholder?: string;
 
-  @property({ type: <any>RegExp })
+  @property({ type: <any> RegExp })
   pattern?: RegExp;
 
   @property({ type: Number, reflectToAttribute: true })
@@ -96,7 +96,7 @@ export class TextBox extends DecoratedFieldMixin(PolymerElement) implements Valu
 
 @customElement('dope-multitext-box')
 export class MiltitextBox extends DecoratedFieldMixin(PolymerElement) implements ValueField<string> {
-  static get template () { return mkTemplate(multitextBoxView); }
+  static get template() { return mkTemplate(multitextBoxView); }
 
   @query('.raw')
   protected field!: MultitextField;
@@ -133,7 +133,7 @@ export class MiltitextBox extends DecoratedFieldMixin(PolymerElement) implements
 
 @customElement('dope-list-box')
 export class ListBox<T> extends DecoratedFieldMixin(PolymerElement) implements ValueField<T|undefined> {
-  static get template () { return mkTemplate(listBoxView); }
+  static get template() { return mkTemplate(listBoxView); }
   @property({ type: String })
   placeholder?: string;
 
@@ -147,10 +147,10 @@ export class ListBox<T> extends DecoratedFieldMixin(PolymerElement) implements V
   formatter: (item: T|undefined) => string;
 
   @property()
-  equality: (a: T|undefined, b: T|undefined) => boolean = (a, b) => a === b;
+  equality: (a: T|undefined, b: T|undefined) => boolean = (a, b) => a === b
 
   @property({ type: Array })
-  items: ListFieldItem<T>[] = [];
+  items: Array<ListFieldItem<T>> = [];
 
   @property({ type: Number })
   tabindex: number = 0;
@@ -160,7 +160,7 @@ export class ListBox<T> extends DecoratedFieldMixin(PolymerElement) implements V
 
   constructor() {
     super();
-    this.formatter = x => x ? x.toString() : (this.placeholder || '');
+    this.formatter = (x) => x ? x.toString() : (this.placeholder || '');
   }
 
   activate() { this.impl.activate(); }
@@ -178,7 +178,7 @@ export class ListBox<T> extends DecoratedFieldMixin(PolymerElement) implements V
 
 @customElement('dope-date-box')
 export class DateBox extends DecoratedFieldMixin(PolymerElement) implements ValueField<DateTime|undefined> {
-  static get template () { return mkTemplate(dateBoxView); }
+  static get template() { return mkTemplate(dateBoxView); }
   @property({ type: String })
   placeholder?: string;
 
@@ -209,23 +209,23 @@ export class DateBox extends DecoratedFieldMixin(PolymerElement) implements Valu
 
 @customElement('dope-time-box')
 export class TimeBox extends DecoratedFieldMixin(PolymerElement) implements ValueField<TimeSpan|undefined> {
-  static get template () { return mkTemplate(timeBoxView); }
+  static get template() { return mkTemplate(timeBoxView); }
   @property({ type: String })
   placeholder?: string;
 
-  @property({ type: <any>TimeSpan, notify: true })
+  @property({ type: <any> TimeSpan, notify: true })
   value: TimeSpan|undefined;
 
   @property()
   formatter: (item: TimeSpan|undefined) => string;
 
-  @property({ type: <any>TimeSpan })
+  @property({ type: <any> TimeSpan })
   startTime!: TimeSpan;
 
-  @property({ type: <any>TimeSpan })
+  @property({ type: <any> TimeSpan })
   endTime!: TimeSpan;
 
-  @property({ type: <any>TimeSpan })
+  @property({ type: <any> TimeSpan })
   step!: TimeSpan;
 
   @query('dope-time-picker')
@@ -233,7 +233,7 @@ export class TimeBox extends DecoratedFieldMixin(PolymerElement) implements Valu
 
   constructor() {
     super();
-    this.formatter = x => x ? sprintf('%02d:%02d', x.hours, x.minutes) : (this.placeholder || '');
+    this.formatter = (x) => x ? sprintf('%02d:%02d', x.hours, x.minutes) : (this.placeholder || '');
   }
 
   activate() { this.impl.activate(); }
@@ -251,7 +251,7 @@ export class TimeBox extends DecoratedFieldMixin(PolymerElement) implements Valu
 
 @customElement('dope-datetime-box')
 export class DateTimeBox extends DecoratedFieldMixin(PolymerElement) implements ValueField<DateTime|undefined> {
-  static get template () { return mkTemplate(dateTimeBoxView); }
+  static get template() { return mkTemplate(dateTimeBoxView); }
   @property({ type: String })
   placeholder?: string;
 
@@ -266,7 +266,12 @@ export class DateTimeBox extends DecoratedFieldMixin(PolymerElement) implements 
 
   constructor() {
     super();
-    this.formatter = x => x ? sprintf('%04d. %02d. %02d %02d:%02d', x.year, x.month, x.day, x.hours, x.minutes) : (this.placeholder || '');
+    this.formatter = (x) => {
+      if (x) {
+        return sprintf('%04d. %02d. %02d %02d:%02d', x.year, x.month, x.day, x.hours, x.minutes);
+      }
+      return (this.placeholder || '');
+    };
   }
 
   activate() { this.impl.activate(); }
@@ -282,10 +287,9 @@ export class DateTimeBox extends DecoratedFieldMixin(PolymerElement) implements 
   }
 }
 
-
 @customElement('dope-date-range-box')
 export class DateRangeBox extends DecoratedFieldMixin(PolymerElement) implements ValueField<DateTimeRange> {
-  static get template () { return mkTemplate(dateRangeBoxView); }
+  static get template() { return mkTemplate(dateRangeBoxView); }
 
   private __valueChanging = false;
 

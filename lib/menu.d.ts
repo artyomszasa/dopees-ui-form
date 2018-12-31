@@ -1,6 +1,6 @@
 import '@polymer/polymer/lib/elements/dom-if';
 import '@polymer/polymer/lib/elements/dom-repeat';
-import { PolymerElement } from "@polymer/polymer/polymer-element";
+import { PolymerElement } from '@polymer/polymer/polymer-element';
 export interface MenuItem {
     readonly text: string;
     readonly disabled?: boolean;

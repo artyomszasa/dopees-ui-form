@@ -5,9 +5,9 @@ import { TimeSpan } from 'dopees-core/lib/datetime';
 import { property, observe, customElement } from '@polymer/decorators/lib/decorators';
 import { sprintf } from 'dopees-core/lib/string';
 
-const min = new TimeSpan("00:00");
-const max = new TimeSpan("23:59:59");
-const defaultStep = new TimeSpan("00:30:00");
+const min = new TimeSpan('00:00');
+const max = new TimeSpan('23:59:59');
+const defaultStep = new TimeSpan('00:30:00');
 
 @customElement('dope-time-field')
 export class TimeField extends ListField<TimeSpan> {
@@ -16,7 +16,7 @@ export class TimeField extends ListField<TimeSpan> {
     if ('value' === propertyName) {
       return TimeSpan;
     }
-    return (<any>ListField).typeForProperty(propertyName);
+    return (<any> ListField).typeForProperty(propertyName);
   }
 
   _deserializeValue(value: string|null, type: any) {
@@ -51,8 +51,8 @@ export class TimeField extends ListField<TimeSpan> {
         return !a;
       }
       return a.equalsTo(b);
-    }
-    this.formatter = x => x ? sprintf('%02d:%02d', x.hours, x.minutes) : '';
+    };
+    this.formatter = (x) => x ? sprintf('%02d:%02d', x.hours, x.minutes) : '';
   }
 
   @observe('startTime', 'endTime', 'step')
@@ -60,9 +60,9 @@ export class TimeField extends ListField<TimeSpan> {
     if (!startTime || !endTime || !step) {
       return;
     }
-    const items: ListFieldItem<TimeSpan>[] = [];
+    const items: Array<ListFieldItem<TimeSpan>> = [];
     for (let curr = startTime; lessThan(curr, endTime); curr = curr.add(step)) {
-      items.push({ data: curr })
+      items.push({ data: curr });
     }
     this.items = items;
   }

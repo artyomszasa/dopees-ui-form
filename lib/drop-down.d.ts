@@ -1,4 +1,4 @@
-import { PolymerElement } from "@polymer/polymer/polymer-element";
+import { PolymerElement } from '@polymer/polymer/polymer-element';
 export declare class DopeDropDown<T> extends PolymerElement {
     static readonly template: HTMLTemplateElement;
     placeholder?: string;

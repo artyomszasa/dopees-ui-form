@@ -23,7 +23,10 @@ export interface Field {
     validationMessage?: string;
     /** Activates field. */
     activate(): void;
-    /** Triggered on validation. Returns a message describing the validation constraints that the control does not satisfy if any. */
+    /**
+     * Triggered on validation. Returns a message describing the validation constraints that the control does not satisfy
+     * if any.
+     */
     validate(): string | undefined;
 }
 export interface FieldWrapper {
