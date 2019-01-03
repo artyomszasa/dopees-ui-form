@@ -1,6 +1,8 @@
 .menu {
   padding: .5rem 0;
   background-color: var(--background-color, #fff);
+  overflow-y: auto; /* on iOS has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
 }
 
 .item {
