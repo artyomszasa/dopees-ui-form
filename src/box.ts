@@ -1,4 +1,6 @@
 import 'dopees-ui/lib/material-icon';
+import './datetime-picker';
+import './date-range-picker';
 import './text-field';
 import './list-picker';
 import './text-field';
