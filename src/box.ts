@@ -8,7 +8,7 @@ import './multitext-field';
 import '@polymer/polymer/lib/elements/dom-if';
 import { PolymerElement } from '@polymer/polymer/polymer-element';
 import { customElement, property, query, observe } from '@polymer/decorators/lib/decorators';
-import { ValueField, DecoratedFieldMixin } from './field';
+import { ValueField, DecoratedFieldMixin, Field, FieldWrapper } from './field';
 import { MultitextField } from './multitext-field';
 import { ListFieldItem } from './list-field';
 import { ListPicker } from './list-picker';
@@ -29,6 +29,32 @@ import dateBoxView from './box/date-box.pug';
 import dateTimeBoxView from './box/datetime-box.pug';
 import dateRangeBoxView from './box/date-range-box.pug';
 import timeBoxView from './box/time-box.pug';
+
+export interface ClearablePicker {
+  readonly clearable: boolean;
+  computeClearable(empty: boolean, required: boolean): boolean;
+  computeIconType(clearable: boolean): string;
+}
+
+type DecoratedFieldElement = PolymerElement&Field&FieldWrapper;
+
+type Ctor<T> = new (...args: any[]) => T;
+
+const ClearablePickerMixin = <T extends DecoratedFieldElement> (base: Ctor<T>) => {
+  class SomeClearablePicker extends (<Ctor<DecoratedFieldElement>> base) implements ClearablePicker {
+    @property({ type: Boolean, computed: 'computeClearable(empty, required)' })
+    clearable = false;
+
+    computeClearable(empty: boolean, required: boolean) {
+      return !empty && !required;
+    }
+
+    computeIconType(clearable: boolean) {
+      return clearable ? 'close' : 'expand more';
+    }
+  }
+  return <Ctor<T&ClearablePicker>> <unknown> SomeClearablePicker;
+};
 
 @customElement('dope-box')
 export class BoxField extends DecoratedFieldMixin(PolymerElement) {
@@ -210,8 +236,12 @@ export class DateBox extends DecoratedFieldMixin(PolymerElement) implements Valu
 }
 
 @customElement('dope-time-box')
-export class TimeBox extends DecoratedFieldMixin(PolymerElement) implements ValueField<TimeSpan|undefined> {
+export class TimeBox
+  extends ClearablePickerMixin(DecoratedFieldMixin(PolymerElement))
+  implements ValueField<TimeSpan|undefined> {
+
   static get template() { return mkTemplate(timeBoxView); }
+
   @property({ type: String })
   placeholder?: string;
 
@@ -247,13 +277,22 @@ export class TimeBox extends DecoratedFieldMixin(PolymerElement) implements Valu
   onIconClick(e: MouseEvent) {
     e.preventDefault();
     e.stopPropagation();
-    this.activate();
+    if (this.clearable) {
+      this.value = undefined;
+      this.dirty = true;
+    } else {
+      this.activate();
+    }
   }
 }
 
 @customElement('dope-datetime-box')
-export class DateTimeBox extends DecoratedFieldMixin(PolymerElement) implements ValueField<DateTime|undefined> {
+export class DateTimeBox
+  extends ClearablePickerMixin(DecoratedFieldMixin(PolymerElement))
+  implements ValueField<DateTime|undefined> {
+
   static get template() { return mkTemplate(dateTimeBoxView); }
+
   @property({ type: String })
   placeholder?: string;
 
@@ -285,12 +324,20 @@ export class DateTimeBox extends DecoratedFieldMixin(PolymerElement) implements 
   onIconClick(e: MouseEvent) {
     e.preventDefault();
     e.stopPropagation();
-    this.activate();
+    if (this.clearable) {
+      this.value = undefined;
+      this.dirty = true;
+    } else {
+      this.activate();
+    }
   }
 }
 
 @customElement('dope-date-range-box')
-export class DateRangeBox extends DecoratedFieldMixin(PolymerElement) implements ValueField<DateTimeRange> {
+export class DateRangeBox
+  extends ClearablePickerMixin(DecoratedFieldMixin(PolymerElement))
+  implements ValueField<DateTimeRange> {
+
   static get template() { return mkTemplate(dateRangeBoxView); }
 
   private __valueChanging = false;
@@ -325,7 +372,12 @@ export class DateRangeBox extends DecoratedFieldMixin(PolymerElement) implements
   onIconClick(e: MouseEvent) {
     e.preventDefault();
     e.stopPropagation();
-    this.activate();
+    if (this.clearable) {
+      this.value = { };
+      this.dirty = true;
+    } else {
+      this.activate();
+    }
   }
 
   @observe('value')

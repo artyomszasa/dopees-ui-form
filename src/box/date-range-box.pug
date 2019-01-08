@@ -24,4 +24,4 @@ dope-box(
       value='{{value}}'
       start-date='{{startDate}}'
       end-date='{{endDate}}')
-    dope-material-icon.icon(slot='icon' type='expand more' on-click='onIconClick')
+    dope-material-icon.icon(slot='icon' type$='[[computeIconType(clearable)]]' on-click='onIconClick')
