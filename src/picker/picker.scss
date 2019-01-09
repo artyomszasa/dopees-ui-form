@@ -5,6 +5,7 @@
 
 .wrapper {
   outline: none;
+  --outline: none;
   min-width: var(--min-width, 6rem);
   background: var(--background-color, #fff);
 }
