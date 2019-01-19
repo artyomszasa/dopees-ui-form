@@ -141,7 +141,7 @@ export class MiltitextBox extends DecoratedFieldMixin(PolymerElement) implements
   @property({ type: Number, reflectToAttribute: true })
   maxlength?: number;
 
-  @property({ type: String })
+  @property({ type: String, notify: true })
   value: string = '';
 
   @property({ type: String })
