@@ -9,8 +9,10 @@ dope-material-icon {
   }
 }
 
-[empty], [required] {
-  dope-material-icon{
+[empty],
+[required],
+[readonly] {
+  dope-material-icon {
     display: none;
   }
 }

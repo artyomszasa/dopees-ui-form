@@ -18,7 +18,7 @@
     align-items: stretch;
     padding: .5rem .625rem .5rem .375rem;
     background: var(--background-color, #fff);
-    border: .125rem solid var(--border-color, rgba(0, 0, 0, 0.25));
+    border: .0625rem solid var(--border-color, rgba(0, 0, 0, 0.25));
     border-radius: .25rem;
     transition: border .35s cubic-bezier(0,0,.2,1);
   }
@@ -128,7 +128,7 @@
 
   &:hover {
     .field--box {
-      border: .125rem solid var(--border-hover-color, rgba(0, 0, 0, 0.5));
+      border: .0625rem solid var(--border-hover-color, rgba(0, 0, 0, 0.5));
     }
   }
 
