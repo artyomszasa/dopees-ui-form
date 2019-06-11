@@ -7,7 +7,7 @@ export interface PickerTemplateOptions {
     css?: string;
     arguments?: {};
 }
-declare const Picker_base: import("./helpers").Ctor<PolymerElement & import("./field").Field>;
+declare const Picker_base: new (...args: any[]) => PolymerElement & import("./field").Field;
 export declare class Picker<T> extends Picker_base {
     static createTemplate<T extends new (...args: any[]) => PolymerElement>(host: T, options: PickerTemplateOptions): HTMLTemplateElement;
     private __blurTimeout;

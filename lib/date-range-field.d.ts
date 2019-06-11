@@ -6,7 +6,7 @@ export interface DateTimeRange {
     start?: DateTime;
     end?: DateTime;
 }
-declare const DateRangeField_base: import("./helpers").Ctor<PolymerElement & import("./field").Field>;
+declare const DateRangeField_base: new (...args: any[]) => PolymerElement & import("./field").Field;
 export declare class DateRangeField extends DateRangeField_base implements ValueField<DateTimeRange> {
     static readonly template: HTMLTemplateElement;
     private __blurTimeout;

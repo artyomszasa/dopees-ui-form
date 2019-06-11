@@ -39,10 +39,8 @@ export interface ClearablePicker {
 
 type DecoratedFieldElement = PolymerElement&Field&FieldWrapper;
 
-type Ctor<T> = new (...args: any[]) => T;
-
-const ClearablePickerMixin = <T extends DecoratedFieldElement> (base: Ctor<T>) => {
-  class SomeClearablePicker extends (<Ctor<DecoratedFieldElement>> base) implements ClearablePicker {
+const ClearablePickerMixin = <T extends DecoratedFieldElement> (base: new (...args: any[]) => T) => {
+  class SomeClearablePicker extends (<new (...args: any[]) => DecoratedFieldElement> base) implements ClearablePicker {
     @property({ type: Boolean, computed: 'computeClearable(empty, required)' })
     clearable = false;
 
@@ -54,7 +52,7 @@ const ClearablePickerMixin = <T extends DecoratedFieldElement> (base: Ctor<T>) =
       return clearable ? 'close' : 'expand more';
     }
   }
-  return <Ctor<T&ClearablePicker>> <unknown> SomeClearablePicker;
+  return <new (...args: any[]) => T&ClearablePicker> <unknown> SomeClearablePicker;
 };
 
 @customElement('dope-box')
@@ -189,7 +187,7 @@ export class ListBox<T> extends DecoratedFieldMixin(PolymerElement) implements V
 
   constructor() {
     super();
-    this.formatter = (x) => x ? x.toString() : (this.placeholder || '');
+    this.formatter = (x) => x ? (<any> x).toString() : (this.placeholder || '');
   }
 
   activate() { this.impl.activate(); }
@@ -378,24 +376,6 @@ export class DateRangeBox
       this.dirty = true;
     } else {
       this.activate();
-    }
-  }
-
-  @observe('value')
-  valueChanged(value: DateTimeRange) {
-    this.__valueChanging = true;
-    try {
-      this.startDate = value.start;
-      this.endDate = value.end;
-    } finally {
-      this.__valueChanging = false;
-    }
-  }
-
-  @observe('startDate', 'endDate')
-  valuesChanged(start: DateTime|undefined, end: DateTime|undefined) {
-    if (!this.__valueChanging) {
-      this.value = { start, end };
     }
   }
 }

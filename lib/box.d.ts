@@ -25,15 +25,14 @@ export interface ClearablePicker {
     computeIconType(clearable: boolean): string;
 }
 declare type DecoratedFieldElement = PolymerElement & Field & FieldWrapper;
-declare type Ctor<T> = new (...args: any[]) => T;
-declare const BoxField_base: import("./helpers").Ctor<DecoratedFieldElement>;
+declare const BoxField_base: new (...args: any[]) => DecoratedFieldElement;
 export declare class BoxField extends BoxField_base {
     static readonly template: HTMLTemplateElement;
     __showHint(error: string | undefined, hint: string | undefined): boolean;
     isNonEmpty(...values: any[]): boolean;
     isEmpty(...values: any[]): boolean;
 }
-declare const TextBox_base: import("./helpers").Ctor<DecoratedFieldElement>;
+declare const TextBox_base: new (...args: any[]) => DecoratedFieldElement;
 export declare class TextBox extends TextBox_base implements ValueField<string> {
     static readonly template: HTMLTemplateElement;
     _deserializeValue(value: string | null, type: any): any;
@@ -50,7 +49,7 @@ export declare class TextBox extends TextBox_base implements ValueField<string> 
     activate(): void;
     onClearClick(e: MouseEvent): void;
 }
-declare const MiltitextBox_base: import("./helpers").Ctor<DecoratedFieldElement>;
+declare const MiltitextBox_base: new (...args: any[]) => DecoratedFieldElement;
 export declare class MiltitextBox extends MiltitextBox_base implements ValueField<string> {
     static readonly template: HTMLTemplateElement;
     protected field: MultitextField;
@@ -64,7 +63,7 @@ export declare class MiltitextBox extends MiltitextBox_base implements ValueFiel
     activate(): void;
     onClearClick(e: MouseEvent): void;
 }
-declare const ListBox_base: import("./helpers").Ctor<DecoratedFieldElement>;
+declare const ListBox_base: new (...args: any[]) => DecoratedFieldElement;
 export declare class ListBox<T> extends ListBox_base implements ValueField<T | undefined> {
     static readonly template: HTMLTemplateElement;
     placeholder?: string;
@@ -80,7 +79,7 @@ export declare class ListBox<T> extends ListBox_base implements ValueField<T | u
     computeEmpty(empty: boolean, placeholder: string | undefined): boolean;
     onIconClick(e: MouseEvent): void;
 }
-declare const DateBox_base: import("./helpers").Ctor<DecoratedFieldElement>;
+declare const DateBox_base: new (...args: any[]) => DecoratedFieldElement;
 export declare class DateBox extends DateBox_base implements ValueField<DateTime | undefined> {
     static readonly template: HTMLTemplateElement;
     placeholder?: string;
@@ -92,7 +91,7 @@ export declare class DateBox extends DateBox_base implements ValueField<DateTime
     computeEmpty(empty: boolean, placeholder: string | undefined): boolean;
     onIconClick(e: MouseEvent): void;
 }
-declare const TimeBox_base: Ctor<PolymerElement & Field & FieldWrapper & ClearablePicker>;
+declare const TimeBox_base: new (...args: any[]) => PolymerElement & Field & FieldWrapper & ClearablePicker;
 export declare class TimeBox extends TimeBox_base implements ValueField<TimeSpan | undefined> {
     static readonly template: HTMLTemplateElement;
     placeholder?: string;
@@ -107,7 +106,7 @@ export declare class TimeBox extends TimeBox_base implements ValueField<TimeSpan
     computeEmpty(empty: boolean, placeholder: string | undefined): boolean;
     onIconClick(e: MouseEvent): void;
 }
-declare const DateTimeBox_base: Ctor<PolymerElement & Field & FieldWrapper & ClearablePicker>;
+declare const DateTimeBox_base: new (...args: any[]) => PolymerElement & Field & FieldWrapper & ClearablePicker;
 export declare class DateTimeBox extends DateTimeBox_base implements ValueField<DateTime | undefined> {
     static readonly template: HTMLTemplateElement;
     placeholder?: string;
@@ -119,7 +118,7 @@ export declare class DateTimeBox extends DateTimeBox_base implements ValueField<
     computeEmpty(empty: boolean, placeholder: string | undefined): boolean;
     onIconClick(e: MouseEvent): void;
 }
-declare const DateRangeBox_base: Ctor<PolymerElement & Field & FieldWrapper & ClearablePicker>;
+declare const DateRangeBox_base: new (...args: any[]) => PolymerElement & Field & FieldWrapper & ClearablePicker;
 export declare class DateRangeBox extends DateRangeBox_base implements ValueField<DateTimeRange> {
     static readonly template: HTMLTemplateElement;
     private __valueChanging;
@@ -133,7 +132,5 @@ export declare class DateRangeBox extends DateRangeBox_base implements ValueFiel
     activate(): void;
     computeEmpty(empty: boolean, placeholder: string | undefined): boolean;
     onIconClick(e: MouseEvent): void;
-    valueChanged(value: DateTimeRange): void;
-    valuesChanged(start: DateTime | undefined, end: DateTime | undefined): void;
 }
 export {};

@@ -97,8 +97,8 @@ export class DateRangeField extends FieldMixin(PolymerElement) implements ValueF
   valueChanged(value: DateTimeRange) {
     this.__valueChanging = true;
     try {
-      this.startDate = value.start;
-      this.endDate = value.end;
+      this.startDate = <any> (value.start || null); // null needed to propagate null-value, as undefined does not work..
+      this.endDate = <any> (value.end || null);
       this.empty = !value || !(value.start || value.end);
     } finally {
       this.__valueChanging = false;

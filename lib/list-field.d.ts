@@ -10,7 +10,7 @@ export interface ListFieldItem<T> {
     /** Underlying value of the item. */
     readonly data: T;
 }
-declare const ListField_base: import("./helpers").Ctor<PolymerElement & import("./field").Field>;
+declare const ListField_base: new (...args: any[]) => PolymerElement & import("./field").Field;
 export declare class ListField<T> extends ListField_base implements ValueField<T | undefined> {
     static readonly template: HTMLTemplateElement;
     value: T | undefined;

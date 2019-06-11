@@ -4,8 +4,7 @@ import { DateTime } from 'dopees-core/lib/datetime';
 import { sprintf } from 'dopees-core/lib/string';
 import { ValueField } from './field';
 import { Picker } from './picker';
-import { DateField } from './date-field';
-import { DateTimeRange } from './date-range-field';
+import { DateTimeRange, DateRangeField } from './date-range-field';
 
 @customElement('dope-date-range-picker')
 export class DateRangePicker extends Picker<DateTimeRange> implements ValueField<DateTimeRange> {
@@ -41,7 +40,7 @@ export class DateRangePicker extends Picker<DateTimeRange> implements ValueField
   selection: (date: DateTime) => boolean = () => false
 
   @query('dope-date-range-field')
-  innerField!: DateField;
+  innerField!: DateRangeField;
 
   constructor() {
     super();
@@ -84,16 +83,16 @@ export class DateRangePicker extends Picker<DateTimeRange> implements ValueField
     this.empty = !value || !(value.start || value.end);
   }
 
-  @observe('value')
-  valueChanged(value: DateTimeRange) {
-    this.__valueChanging = true;
-    try {
-      this.startDate = value.start;
-      this.endDate = value.end;
-    } finally {
-      this.__valueChanging = false;
-    }
-  }
+  // @observe('value')
+  // valueChanged(value: DateTimeRange) {
+  //   this.__valueChanging = true;
+  //   try {
+  //     this.startDate = value.start;
+  //     this.endDate = value.end;
+  //   } finally {
+  //     this.__valueChanging = false;
+  //   }
+  // }
 
   @observe('startDate', 'endDate')
   valuesChanged(start: DateTime|undefined, end: DateTime|undefined) {
@@ -110,8 +109,8 @@ export class DateRangePicker extends Picker<DateTimeRange> implements ValueField
         this.selection = () => false;
       }
     }
-    if (!this.__valueChanging) {
-      this.value = { start, end };
-    }
+    // if (!this.__valueChanging) {
+    //   this.value = { start, end };
+    // }
   }
 }

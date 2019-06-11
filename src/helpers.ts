@@ -1,5 +1,3 @@
-export type Ctor<T> = new (...args: any[]) => T;
-
 export interface WrapEventInit {
   prefix?: string;
   bubbles?: boolean;

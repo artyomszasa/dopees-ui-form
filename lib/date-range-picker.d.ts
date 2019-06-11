@@ -2,8 +2,7 @@ import './date-range-field';
 import { DateTime } from 'dopees-core/lib/datetime';
 import { ValueField } from './field';
 import { Picker } from './picker';
-import { DateField } from './date-field';
-import { DateTimeRange } from './date-range-field';
+import { DateTimeRange, DateRangeField } from './date-range-field';
 export declare class DateRangePicker extends Picker<DateTimeRange> implements ValueField<DateTimeRange> {
     static readonly template: HTMLTemplateElement;
     private __valueChanging;
@@ -12,11 +11,10 @@ export declare class DateRangePicker extends Picker<DateTimeRange> implements Va
     endDate: DateTime | undefined;
     formatter: (item: DateTimeRange) => string;
     selection: (date: DateTime) => boolean;
-    innerField: DateField;
+    innerField: DateRangeField;
     constructor();
     activate(): void;
     forceEmpty(empty: boolean): void;
     observeEmpty(value: DateTimeRange | undefined): void;
-    valueChanged(value: DateTimeRange): void;
     valuesChanged(start: DateTime | undefined, end: DateTime | undefined): void;
 }

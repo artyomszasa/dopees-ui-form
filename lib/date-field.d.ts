@@ -2,7 +2,7 @@ import './calendar';
 import { PolymerElement } from '@polymer/polymer/polymer-element';
 import { DateTime } from 'dopees-core/lib/datetime';
 import { ValueField } from './field';
-declare const DateField_base: import("./helpers").Ctor<PolymerElement & import("./field").Field>;
+declare const DateField_base: new (...args: any[]) => PolymerElement & import("./field").Field;
 export declare class DateField extends DateField_base implements ValueField<DateTime | undefined> {
     static readonly template: HTMLTemplateElement;
     private __blurTimeout;

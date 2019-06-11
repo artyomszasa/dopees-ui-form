@@ -1,5 +1,4 @@
 import { PolymerElement } from '@polymer/polymer/polymer-element';
-import { Ctor } from 'src/helpers';
 export declare const keyIsField: unique symbol;
 export declare const instanceofField: <T extends HTMLElement>(node: T) => node is T & Field;
 export interface Field {
@@ -41,8 +40,8 @@ export interface HasValidation {
     validateOnFocusChange(focused: boolean): void;
 }
 declare type PolymerField = PolymerElement & Field;
-export declare const ValidationMixin: <T extends PolymerField>(base: Ctor<T>) => Ctor<T & HasValidation>;
-export declare const FieldMixin: <T extends PolymerElement>(base: Ctor<T>) => Ctor<T & Field>;
-export declare const DecoratedWrapperMixin: <T extends PolymerElement>(base: Ctor<T>) => Ctor<T & FieldWrapper>;
-export declare const DecoratedFieldMixin: <T extends PolymerElement>(base: Ctor<T>) => Ctor<T & Field & FieldWrapper>;
+export declare const ValidationMixin: <T extends PolymerField>(base: new (...args: any[]) => T) => new (...args: any[]) => T & HasValidation;
+export declare const FieldMixin: <T extends PolymerElement>(base: new (...args: any[]) => T) => new (...args: any[]) => T & Field;
+export declare const DecoratedWrapperMixin: <T extends PolymerElement>(base: new (...args: any[]) => T) => new (...args: any[]) => T & FieldWrapper;
+export declare const DecoratedFieldMixin: <T extends PolymerElement>(base: new (...args: any[]) => T) => new (...args: any[]) => T & Field & FieldWrapper;
 export {};

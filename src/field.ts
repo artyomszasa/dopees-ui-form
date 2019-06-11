@@ -1,7 +1,6 @@
 import { property, observe } from '@polymer/decorators/lib/decorators';
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin';
 import { PolymerElement } from '@polymer/polymer/polymer-element';
-import { Ctor } from 'src/helpers';
 
 export const keyIsField = Symbol('isField');
 
@@ -62,8 +61,8 @@ const keyLastFocused = Symbol('lastFocused');
 
 type PolymerField = PolymerElement&Field;
 
-export const ValidationMixin = dedupingMixin(<T extends PolymerField>(base: Ctor<T>) => {
-  class SomeFieldWithValidation extends (<Ctor<PolymerField>> base) implements HasValidation {
+export const ValidationMixin = dedupingMixin(<T extends PolymerField>(base: new (...args: any[]) => T) => {
+  class SomeFieldWithValidation extends (<new (...args: any[]) => PolymerField> base) implements HasValidation {
 
     @observe('value')
     performValidation() {
@@ -81,11 +80,11 @@ export const ValidationMixin = dedupingMixin(<T extends PolymerField>(base: Ctor
       this.validationMessage = this.validate();
     }
   }
-  return <Ctor<T&HasValidation>> <unknown> SomeFieldWithValidation;
+  return <new (...args: any[]) => T&HasValidation> <unknown> SomeFieldWithValidation;
 });
 
-export const FieldMixin = dedupingMixin(<T extends PolymerElement>(base: Ctor<T>) => {
-  class SomeField extends (<Ctor<PolymerElement>> base) implements Field {
+export const FieldMixin = dedupingMixin(<T extends PolymerElement>(base: new (...args: any[]) => T) => {
+  class SomeField extends (<new (...args: any[]) => PolymerElement> base) implements Field {
 
     @property({ type: Boolean, notify: true, reflectToAttribute: true })
     activated: boolean = false;
@@ -124,11 +123,11 @@ export const FieldMixin = dedupingMixin(<T extends PolymerElement>(base: Ctor<T>
     }
   }
   SomeField.constructor[keyIsField] = true;
-  return <Ctor<T & Field>> <unknown> SomeField;
+  return <new (...args: any[]) => T&Field> <unknown> SomeField;
 });
 
-export const DecoratedWrapperMixin = dedupingMixin(<T extends PolymerElement>(base: Ctor<T>) => {
-  class SomeDecoratedField extends (<Ctor<PolymerElement>> base) implements FieldWrapper {
+export const DecoratedWrapperMixin = dedupingMixin(<T extends PolymerElement>(base: new (...args: any[]) => T) => {
+  class SomeDecoratedField extends (<new (...args: any[]) => PolymerElement> base) implements FieldWrapper {
 
     @property({ type: String })
     label?: string = '';
@@ -136,7 +135,8 @@ export const DecoratedWrapperMixin = dedupingMixin(<T extends PolymerElement>(ba
     @property({ type: String })
     hint?: string;
   }
-  return <Ctor<T & FieldWrapper>> <unknown> SomeDecoratedField;
+  return <new (...args: any[]) => T&FieldWrapper> <unknown> SomeDecoratedField;
 });
 
-export const DecoratedFieldMixin = <T extends PolymerElement>(base: Ctor<T>) => DecoratedWrapperMixin(FieldMixin(base));
+export const DecoratedFieldMixin =
+  <T extends PolymerElement>(base: new (...args: any[]) => T) => DecoratedWrapperMixin(FieldMixin(base));
