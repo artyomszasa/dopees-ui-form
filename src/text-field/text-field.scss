@@ -13,4 +13,5 @@ input {
   background: transparent;
   text-align: var(--text-align, left);
   color: var(--text-color, #000);
+  -webkit-appearance: none;
 }
