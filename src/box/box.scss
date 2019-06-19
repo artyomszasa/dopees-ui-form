@@ -93,9 +93,9 @@
     .field{
       &--label {
         padding: 0 .25rem;
-        height: .75rem;
-        font-size: .75rem;
-        line-height: .75rem;
+        height: var(--height-small, .75rem);
+        font-size: var(--font-size-small, .75rem);
+        line-height: var(--font-size-small, .75rem);
         transform: translate3d(-.25rem, -.875rem, 0);
         transform-origin: top left;
         opacity: 1;
