@@ -20,8 +20,8 @@ textarea {
   resize: none;
   min-height: calc(var(--height, 1.75rem) - .75rem);
   line-height: 1.4;//calc(var(--height, 1.75rem) - .75rem);
-  padding-top: .375rem;
-  padding-bottom: .375rem;
+  // padding-top: .375rem;
+  // padding-bottom: .375rem;
 }
 .pre {
   position: absolute;
