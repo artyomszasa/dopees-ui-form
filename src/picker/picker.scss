@@ -12,4 +12,5 @@
 
 dope-drop-down > * {
   --height: var(--dropdown-height);
+  transform: translateZ(0);
 }
