@@ -91,8 +91,8 @@ export class TextField extends ValidationMixin(FieldMixin(PolymerElement)) imple
   }
 
   @observe('value')
-  valueChanged(value: string) {
-    this.native.value = (null === value || undefined === value) ? '' : value;
-    this.empty = !value;
+  valueChanged(value: string|number) {
+    this.native.value = (null === value || undefined === value) ? '' : String(value);
+    this.empty = 0 !== value && !value;
   }
 }

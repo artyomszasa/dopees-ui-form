@@ -20,6 +20,6 @@ export declare class TextField extends TextField_base implements ValueField<stri
     onBlur(): void;
     onFocus(): void;
     validate(): string | undefined;
-    valueChanged(value: string): void;
+    valueChanged(value: string | number): void;
 }
 export {};
