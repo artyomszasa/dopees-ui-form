@@ -20,7 +20,8 @@
   &--body {
     position: var(--dropdown-position, absolute);
     display: none;
-    top: var(--height, 1.75rem);
+    top: var(--dropdown-top, var(--height, 1.75rem));
+    bottom: var(--dropdown-bottom, unset);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     left: var(--dropdown-left, 0);
