@@ -52,6 +52,6 @@ export class ListPicker<T> extends Picker<T> implements ValueField<T|undefined> 
 
   @observe('value')
   observeEmpty(value: T|undefined) {
-    this.empty = !value;
+    this.empty = 0 !== <any> value && !value;
   }
 }

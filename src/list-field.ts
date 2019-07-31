@@ -95,7 +95,7 @@ export class ListField<T> extends FieldMixin(PolymerElement) implements ValueFie
 
   @observe('value')
   observeEmpty(value: T|undefined) {
-    this.empty = !value;
+    this.empty = 0 !== <any> value && !value;
     // moved to validation...
     // if (this.required) {
     //   this.invalid = !value;
