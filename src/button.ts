@@ -16,17 +16,17 @@ export class Button extends PolymerElement {
   @property({ type: String })
   label?: string;
 
-  /**
-   * Triggered when users clicks the button. Fires composed click event on the button itself.
-   *
-   * @param evt Related mouse event.
-   */
-  onClick(evt: MouseEvent) {
-    evt.stopPropagation();
-    this.dispatchEvent(new MouseEvent('click', {
-      bubbles: true,
-      cancelable: true,
-      composed: true
-    }));
-  }
+  // /**
+  //  * Triggered when users clicks the button. Fires composed click event on the button itself.
+  //  *
+  //  * @param evt Related mouse event.
+  //  */
+  // onClick(evt: MouseEvent) {
+  //   evt.stopPropagation();
+  //   this.dispatchEvent(new MouseEvent('click', {
+  //     bubbles: true,
+  //     cancelable: true,
+  //     composed: true
+  //   }));
+  // }
 }
