@@ -187,6 +187,7 @@ export class ListBox<T> extends DecoratedFieldMixin(PolymerElement) implements V
 
   constructor() {
     super();
+    this.empty = true;
     this.formatter = (x) => x ? (<any> x).toString() : (this.placeholder || '');
   }
 
