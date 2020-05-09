@@ -17,8 +17,8 @@
   "dependencies": {
     "@polymer/polymer": "3.1.0",
     "@polymer/decorators": "3.0.0",
-    "dopees-core": "artyomszasa/dopees-core",
-    "dopees-ui": "artyomszasa/dopees-ui"
+    "dopees-core": "artyomszasa/dopees-core#master",
+    "dopees-ui": "artyomszasa/dopees-ui#master"
   },
   "devDependencies": {
     "@types/chai": "4.1.7",
@@ -28,9 +28,9 @@
     "mocha": "5.2.0",
     "nyc": "13.1.0",
     "ts-node": "7.0.1",
-    "dopees-chain-sass": "artyomszasa/dopees-chain-sass",
-    "dopees-chain-pug": "artyomszasa/dopees-chain-pug",
-    "dopees-chain-typescript": "artyomszasa/dopees-chain-typescript",
-    "dopees-chain-polymer": "artyomszasa/dopees-chain-polymer"
+    "dopees-chain-sass": "artyomszasa/dopees-chain-sass#master",
+    "dopees-chain-pug": "artyomszasa/dopees-chain-pug#master",
+    "dopees-chain-typescript": "artyomszasa/dopees-chain-typescript#master",
+    "dopees-chain-polymer": "artyomszasa/dopees-chain-polymer#master"
   }
 }
