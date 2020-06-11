@@ -1,16 +1,20 @@
+/// Default text color
+/// @type Color
+$default-text-color: #000;
+
 input {
-  height: var(--height, 1.75rem);
-  line-height: var(--height, 1.75rem);
-  width: var(--width, 100%);
   display: var(--display);
-  padding: var(--padding, 0);
   margin: 0;
-  border: none;
   outline: none;
+  border: 0;
   box-shadow: none;
-  font-size: inherit;
-  font-family: inherit;
   background: transparent;
+  padding: var(--padding, 0);
+  width: var(--width, 100%);
+  height: var(--height, 1.75rem);
   text-align: var(--text-align, left);
-  color: var(--text-color, #000);
+  line-height: var(--height, 1.75rem);
+  color: var(--text-color, $default-text-color);
+  font-family: inherit;
+  font-size: inherit;
 }

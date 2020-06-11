@@ -1,11 +1,12 @@
 @import 'field';
 
 dope-material-icon {
+  transition: background 300ms ease-in-out;
   border-radius: 50%;
-  transition: background .3s;
 
   &:hover {
-    background: var(--color-primary-50, rgba(0,0,0,.05));
+    // FIXME: Változó
+    background: var(--color-primary-50, rgba(0, 0, 0, 0.05));
   }
 }
 

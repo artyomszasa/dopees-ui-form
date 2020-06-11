@@ -1,15 +1,20 @@
+/// Default background color
+/// @type Color
+$default-background-color: #fff;
+
 :host {
   display: inline-block;
   vertical-align: middle;
 }
 
 .wrapper {
+  #{--outline}: none;
+
   outline: none;
-  --outline: none;
+  background: var(--background-color, $default-background-color);
   min-width: var(--min-width, 6rem);
-  background: var(--background-color, #fff);
 }
 
 dope-drop-down {
-  --height: var(--dropdown-height);
+  #{--height}: var(--dropdown-height);
 }

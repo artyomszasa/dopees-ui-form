@@ -6,7 +6,7 @@ import { DateTime, TimeSpan } from 'dopees-core/lib/datetime';
 import { DateField } from './date-field';
 declare const DateTimeField_base: new (...args: any[]) => PolymerElement & import("./field").Field;
 export declare class DateTimeField extends DateTimeField_base implements ValueField<DateTime | undefined> {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     _deserializeValue(value: string | null, type: any): any;
     private __valueChanging;
     private __dirtyChanging;

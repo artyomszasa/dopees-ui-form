@@ -5,12 +5,12 @@
 }
 
 .field {
-  outline: var(--outline, none);
-  height: 100%;
   display: inline-block;
+  outline: var(--outline, none);
+  border-radius: var(--border-radius, 0);
+  height: 100%;
   overflow-x: none;
   overflow-y: auto;
-  border-radius: var(--border-radius, 0);
 }
 
 dope-menu {

@@ -1,3 +1,11 @@
+/// Default background color
+/// @type Color
+$default-background-color: #fff;
+
+/// Default text color
+/// @type Color
+$default-text-color: #000;
+
 :host {
   display: block;
 
@@ -9,46 +17,56 @@
 
 .field {
   cursor: pointer;
+  // FIXME: Változó
   padding-top: 0.375rem;
 
   &--box {
-    position: relative;
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: stretch;
-    padding: .5rem .625rem .5rem .375rem;
-    background: var(--background-color, #fff);
-    border: .0625rem solid var(--border-color, rgba(0, 0, 0, 0.25));
+    // FIXME: Változó
+    transition: border 350ms ease-in-out;
+    // FIXME: Változó
+    border: 0.0625rem solid var(--border-color, rgba(0, 0, 0, 0.25));
+    // FIXME: Változó
     border-radius: var(--border-radius, .25rem);
-    transition: border .35s cubic-bezier(0,0,.2,1);
+    // FIXME: Változó
+    background: var(--background-color, $default-background-color);
+    // FIXME: Változó
+    padding: 0.5rem 0.625rem 0.5rem 0.375rem;
   }
 
   &--hint {
+    // FIXME: Változó
     color: var(--border-hover-color, rgba(0, 0, 0, 0.5));
-    font-size: var(--hint-font-size, .75rem);
+    // FIXME: Változó
+    font-size: var(--hint-font-size, 0.75rem);
   }
 
   &--error {
-    color: var(--border-error-color, #FF1744);
+    // FIXME: Változó
+    color: var(--border-error-color, #ff1744);
+    // FIXME: Változó
     font-size: var(--error-font-size, var(--hint-font-size, .75rem));
   }
 
   &--label {
-    position: relative;
     display: block;
+    position: relative;
     align-self: flex-start;
+    transform: translateZ(0);
+    transition: all 350ms ease-in-out;
+    opacity: .38;
     z-index: 1;
-    padding: 0 .5rem 0 0;
     margin: 0;
+    padding: 0 .5rem 0 0;
     width: auto;
     height: var(--height, 1.75rem);
     line-height: var(--height, 1.75rem);
-    font-size: inherit;
+    color: var(--text-color, $default-text-color);
     font-family: inherit;
-    transform: translateZ(0);
-    color: var(--text-color, #000);
-    opacity: .38;
-    transition: all .35s cubic-bezier(0,0,.2,1);
+    font-size: inherit;
     pointer-events: none;
 
     &:empty {
@@ -57,9 +75,9 @@
   }
 
   &--inner {
-    margin-top: calc(-1 * var(--height, 1.75rem));
     display: flex;
-    transition: margin .35s cubic-bezier(0,0,.2,1);
+    transition: margin 350ms ease-in-out;
+    margin-top: calc(-1 * var(--height, 1.75rem));
   }
 
   &[no-label] {
@@ -73,12 +91,16 @@
   // }
 
   &--icon::slotted(dope-material-icon) {
-    width: 1rem;
-    height: 1rem;
-    padding: .25rem;
     align-self: center;
-    fill: var(--text-color, #000);
+    // FIXME: Változó
+    padding: .25rem;
+    // FIXME: Változó
+    width: 1rem;
+    // FIXME: Változó
+    height: 1rem;
+    fill: var(--text-color, $default-text-color);
 
+    // FIXME: Változó
     svg {
       width: 1rem;
       height: 1rem;
@@ -90,18 +112,24 @@
   }
 
   &:not([empty]), &[focused] {
-    .field{
+    .field {
       &--label {
-        padding: 0 .25rem;
-        height: .75rem;
-        font-size: .75rem;
-        line-height: .75rem;
-        transform: translate3d(-.25rem, -.875rem, 0);
-        transform-origin: top left;
+        // FIXME: Változó/Calc
+        transform: translate3d(-0.25rem, -0.875rem, 0);
         opacity: 1;
-        background: var(--background-color, #fff);
+        background: var(--background-color, $default-background-color);
         cursor: text;
+        // FIXME: Változó
+        padding: 0 .25rem;
+        // FIXME: Változó
+        height: .75rem;
+        // FIXME: Változó
+        line-height: .75rem;
+        // FIXME: Változó
         color: var(--border-color, rgba(0, 0, 0, 0.25));
+        // FIXME: Változó
+        font-size: .75rem;
+        transform-origin: top left;
 
         &:empty {
           display: none;
@@ -109,7 +137,8 @@
       }
 
       &--inner {
-        margin-top: -.75rem;
+        // FIXME: Változó
+        margin-top: -0.75rem;
       }
     }
 
@@ -121,6 +150,7 @@
 
     &:hover:not([focused]):not([invalid]) {
       .field--label {
+        // FIXME: Változó
         color: var(--border-hover-color, rgba(0, 0, 0, 0.5));
       }
     }
@@ -128,17 +158,20 @@
 
   &:hover {
     .field--box {
-      border: .0625rem solid var(--border-hover-color, rgba(0, 0, 0, 0.5));
+      // FIXME: Változó
+      border: 0.0625rem solid var(--border-hover-color, rgba(0, 0, 0, 0.5));
     }
   }
 
   &[focused] {
     .field {
       &--box {
+        // FIXME: Változó
         border-color: var(--color-primary-A700, blue);
       }
 
       &--label {
+        // FIXME: Változó
         color: var(--color-primary-A700, blue);
         filter: none;
       }
@@ -148,10 +181,13 @@
   &[invalid] {
     .field {
       &--box {
-        border-color: var(--border-error-color, #FF1744);
+        // FIXME: Változó
+        border-color: var(--border-error-color, #ff1744);
       }
+
       &--label {
-        color: var(--border-error-color, #FF1744);
+        // FIXME: Változó
+        color: var(--border-error-color, #ff1744);
       }
     }
   }

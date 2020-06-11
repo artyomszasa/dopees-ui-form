@@ -9,7 +9,7 @@ export interface ListFieldItem<T> {
     data: T;
 }
 export declare class ListPicker<T> extends Picker<T> implements ValueField<T | undefined> {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     value: T | undefined;
     equality: (a: T | undefined, b: T | undefined) => boolean;
     formatter: (item: T | undefined) => string;

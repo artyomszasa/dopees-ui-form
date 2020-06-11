@@ -1,3 +1,11 @@
+/// Default border color
+/// @type Color
+$default-border-color: rgba(0, 0, 0, 0.1);
+
+/// Default background color
+/// @type Color
+$default-background-color: #fff;
+
 :host {
   display: block;
 }
@@ -5,8 +13,8 @@
 .calendar {
   display: flex;
   flex-direction: column;
+  background: var(--background-color, $default-background-color);
   height: 100%;
-  background: var(--background-color, #fff);
 
   &--head {
     display: flex;
@@ -14,59 +22,63 @@
   }
 
   &--left, &--right {
-    flex: 0 0 1.5rem;
     display: flex;
+    flex: 0 0 var(--g, 1.5rem);
     align-items: center;
     justify-content: center;
 
-    dope-material-icon {
-      width: 1rem;
-      height: 1rem;
-    }
+    // FIXME: változo: icn-s-d
+    dope-material-icon,
     svg {
       width: 1rem;
       height: 1rem;
     }
   }
 
-  &--year{
+  &--year {
     flex: 1;
   }
+
   &--month {
     flex: 2;
   }
 
   &--body {
-    flex: 1;
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    flex: 1;
+    // FIXME: Értékek
     height: calc(100% - 2.875rem);
+    grid-template-columns: repeat(7, 1fr);
   }
 
   &--day {
     display: flex;
+    // FIXME: Calc/SCSS
+    flex: 1 1 14.285%;
     align-items: center;
     justify-content: center;
     // height: 3rem;
-    color: rgba(0,0,0,0.87);
+    // FIXME: Változó
+    transition: background 300ms ease-in-out;
+    border-top: 0.0625rem solid $default-border-color;
+    border-right: 0.0625rem solid $default-border-color;
     text-align: center;
-    // line-height: 3rem;
-    flex: 1 1 14.285%;
+    // FIXME: Változó
+    color: rgba(0, 0, 0, 0.87);
     box-sizing: border-box;
-    border-top: 1px solid rgba(0,0,0,.1);
-    border-right: 1px solid rgba(0,0,0,.1);
-    transition: background .3s;
 
     &:hover {
+      // FIXME: Változó
       background: var(--color-primary-opacity-04, rgba(#000, .04));
     }
 
     &:nth-child(7n + 7) {
-      border-right: none;
+      border-right: 0;
     }
 
     &:not([active]) {
-      color: rgba(0,0,0,0.37);
+      // FIXME: Változó
+      color: rgba(0, 0, 0, 0.37);
     }
 
     &[active] {
@@ -74,6 +86,7 @@
     }
 
     &[selected] {
+      // FIXME: Változó
       background: var(--color-primary-opacity-21, rgba(#000, .21));
     }
 

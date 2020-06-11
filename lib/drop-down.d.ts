@@ -1,6 +1,6 @@
 import { PolymerElement } from '@polymer/polymer/polymer-element';
 export declare class DopeDropDown<T> extends PolymerElement {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     placeholder?: string;
     empty: boolean;
     formatter: (value: T | undefined) => string;

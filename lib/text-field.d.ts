@@ -2,7 +2,7 @@ import { PolymerElement } from '@polymer/polymer/polymer-element';
 import { ValueField } from './field';
 declare const TextField_base: new (...args: any[]) => PolymerElement & import("./field").Field & import("./field").HasValidation;
 export declare class TextField extends TextField_base implements ValueField<string> {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     _deserializeValue(value: string | null, type: any): any;
     type?: string;
     placeholder?: string;

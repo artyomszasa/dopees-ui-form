@@ -12,7 +12,7 @@ interface YearMonth {
  * Implements calendar chooser with optionally selected days.
  */
 export declare class Calandar extends PolymerElement {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     /**
      * Name of the event fired when user clicks some day.
      */

@@ -12,7 +12,7 @@ export interface ListFieldItem<T> {
 }
 declare const ListField_base: new (...args: any[]) => PolymerElement & import("./field").Field;
 export declare class ListField<T> extends ListField_base implements ValueField<T | undefined> {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     value: T | undefined;
     tabindex?: number;
     formatter: (item: T | undefined) => string;

@@ -27,14 +27,14 @@ export interface ClearablePicker {
 declare type DecoratedFieldElement = PolymerElement & Field & FieldWrapper;
 declare const BoxField_base: new (...args: any[]) => DecoratedFieldElement;
 export declare class BoxField extends BoxField_base {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     __showHint(error: string | undefined, hint: string | undefined): boolean;
     isNonEmpty(...values: any[]): boolean;
     isEmpty(...values: any[]): boolean;
 }
 declare const TextBox_base: new (...args: any[]) => DecoratedFieldElement;
 export declare class TextBox extends TextBox_base implements ValueField<string> {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     _deserializeValue(value: string | null, type: any): any;
     protected field: TextField;
     type?: string;
@@ -51,7 +51,7 @@ export declare class TextBox extends TextBox_base implements ValueField<string> 
 }
 declare const MiltitextBox_base: new (...args: any[]) => DecoratedFieldElement;
 export declare class MiltitextBox extends MiltitextBox_base implements ValueField<string> {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     protected field: MultitextField;
     type?: string;
     placeholder?: string;
@@ -65,7 +65,7 @@ export declare class MiltitextBox extends MiltitextBox_base implements ValueFiel
 }
 declare const ListBox_base: new (...args: any[]) => DecoratedFieldElement;
 export declare class ListBox<T> extends ListBox_base implements ValueField<T | undefined> {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     placeholder?: string;
     name?: string;
     value: T | undefined;
@@ -81,7 +81,7 @@ export declare class ListBox<T> extends ListBox_base implements ValueField<T | u
 }
 declare const DateBox_base: new (...args: any[]) => DecoratedFieldElement;
 export declare class DateBox extends DateBox_base implements ValueField<DateTime | undefined> {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     placeholder?: string;
     name?: string;
     value: DateTime | undefined;
@@ -93,7 +93,7 @@ export declare class DateBox extends DateBox_base implements ValueField<DateTime
 }
 declare const TimeBox_base: new (...args: any[]) => PolymerElement & Field & FieldWrapper & ClearablePicker;
 export declare class TimeBox extends TimeBox_base implements ValueField<TimeSpan | undefined> {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     placeholder?: string;
     value: TimeSpan | undefined;
     formatter: (item: TimeSpan | undefined) => string;
@@ -108,7 +108,7 @@ export declare class TimeBox extends TimeBox_base implements ValueField<TimeSpan
 }
 declare const DateTimeBox_base: new (...args: any[]) => PolymerElement & Field & FieldWrapper & ClearablePicker;
 export declare class DateTimeBox extends DateTimeBox_base implements ValueField<DateTime | undefined> {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     placeholder?: string;
     value: DateTime | undefined;
     formatter: (item: DateTime | undefined) => string;
@@ -120,7 +120,7 @@ export declare class DateTimeBox extends DateTimeBox_base implements ValueField<
 }
 declare const DateRangeBox_base: new (...args: any[]) => PolymerElement & Field & FieldWrapper & ClearablePicker;
 export declare class DateRangeBox extends DateRangeBox_base implements ValueField<DateTimeRange> {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     private __valueChanging;
     placeholder?: string;
     name?: string;

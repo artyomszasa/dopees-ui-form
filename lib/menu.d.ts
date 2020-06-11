@@ -9,7 +9,7 @@ export interface MenuItem {
 }
 export declare class Menu extends PolymerElement {
     static readonly chooseEvent = "choose";
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     items: MenuItem[];
     selectedIndex?: number;
     __eq(a: any, b: any): boolean;

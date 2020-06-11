@@ -4,7 +4,7 @@ import { ValueField } from './field';
 import { Picker } from './picker';
 import { TimeField } from './time-field';
 export declare class TimePicker extends Picker<TimeSpan> implements ValueField<TimeSpan | undefined> {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     _deserializeValue(value: string | null, type: any): any;
     value: TimeSpan | undefined;
     formatter: (item: TimeSpan | undefined) => string;

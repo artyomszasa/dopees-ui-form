@@ -2,7 +2,7 @@ import { PolymerElement } from '@polymer/polymer/polymer-element';
 import { ValueField } from './field';
 declare const MultitextField_base: new (...args: any[]) => PolymerElement & import("./field").Field;
 export declare class MultitextField extends MultitextField_base implements ValueField<string> {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     type?: string;
     placeholder?: string;
     minlength?: number;

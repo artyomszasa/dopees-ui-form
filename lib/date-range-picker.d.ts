@@ -4,7 +4,7 @@ import { ValueField } from './field';
 import { Picker } from './picker';
 import { DateTimeRange, DateRangeField } from './date-range-field';
 export declare class DateRangePicker extends Picker<DateTimeRange> implements ValueField<DateTimeRange> {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     private __valueChanging;
     value: DateTimeRange;
     startDate: DateTime | undefined;
